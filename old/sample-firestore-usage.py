@@ -27,3 +27,5 @@ def sample_read_data():
 
     # if you want to specify a collection (default is 'data'), add a parameter:
     df = firestore_read("new_collection")
+    
+firestore_add("merged.csv")

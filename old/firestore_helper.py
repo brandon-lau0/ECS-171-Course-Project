@@ -6,6 +6,7 @@ import os
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+# from pandas import compat
 
 # Use the application default credentials
 # We're pretending I didn't just stick a private key in a json file
@@ -29,12 +30,24 @@ def firestore_add(data, collection_name=u'data'):
     # A batch lets you do a bunch of things without writing each one
     batch = db.batch()
 
-    for row in data_dict:
-        # creates a blank reference document with a firestore-generated uid
-        fs_ref = db.collection(collection_name).document()
+    # Add each row
+    for i, row in enumerate(data_dict):
+        if i >= 8800 and data_dict[row]["Date"] != "2004-01-11" and data_dict[row]["Date"] != "2004-01-10":
 
-        # "set" is the firestore INSERT
-        batch.set(fs_ref, data_dict[row])
+            # Remove NaN values
+            for item in list(data_dict[row]):
+                if  data_dict[row][item] != data_dict[row][item]:
+                    del data_dict[row][item]
+
+            # creates a blank reference document with a firestore-generated uid
+            fs_ref = db.collection(collection_name).document()
+
+            # "set" is the firestore INSERT
+            batch.set(fs_ref, data_dict[row])
+
+            if i % 400 == 0:
+                batch.commit()
+                batch = db.batch()
 
     batch.commit()
 
