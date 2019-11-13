@@ -47,6 +47,16 @@ class DataSet():
         self.test = test
         return train, test
 
+    # Returns a tuple of the X and Y dataframes
+    # y_colname: name of the Y column
+    # df (optional): dataframe, by default will use self.df
+    def split_X_Y(self, y_colname, df=None):
+        if df is None:
+            df = self.df
+        self.df_X = df.drop(columns=[y_colname])
+        self.df_Y = df[[y_colname]]
+        return self.df_X, self.df_Y
+
     def get_colnames(self):
         return list(self.df.columns)
 
