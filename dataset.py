@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import LocalOutlierFactor
 
 # Class that will read, clean, and bin data
 class DataSet():
@@ -19,14 +21,38 @@ class DataSet():
         if remove_outliers:
             self.remove_outliers()
 
+    # Returns a cleaned dataframe with the columns of the features removed  
+    # features: an array of strings of feature names
+    # ex. ['mpg', 'car name']
+    # df (optional): dataframe, if not specified will use self.df
+    def remove_features(self, features, df=None):
+        if df is None:
+            df = self.df
+        self.cleaned_df = df.drop(features, axis=1)
+        return self.cleaned_df
+
     def remove_outliers(self):
         # TODO
         self.df = self.df
 
-
-    def split_data(self, train_prop):
-        # TODO
-        print("TODO")
+    # Returns a tuple of the training and testing dataframes
+    # train_prop: proportion of data to be trained
+    # df (optional): dataframe, by default will use self.df
+    # random (optional): whether to randomize the rows, by default will not randomize
+    def split_data(self, train_prop, df=None, random=False):
+        if df is None:
+            df = self.df
+        train, test = train_test_split(df, train_size=train_prop, shuffle=random)
+        self.train = train
+        self.test = test
+        return train, test
 
     def get_colnames(self):
         return list(self.df.columns)
+
+    # Returns the dataframe
+    def get_df(self):
+        return self.df
+
+    def get_cleaned_df(self):
+        return self.cleaned_df
