@@ -21,7 +21,7 @@ class DataSet():
         if remove_outliers:
             self.remove_outliers()
 
-    # Returns a cleaned dataframe with the columns of the features removed  
+    # Returns a cleaned dataframe with the columns of the features removed
     # features: an array of strings of feature names
     # ex. ['mpg', 'car name']
     # df (optional): dataframe, if not specified will use self.df

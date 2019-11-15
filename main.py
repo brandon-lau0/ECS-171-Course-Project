@@ -7,9 +7,9 @@ from sitedict import *
 
 
 def main():
-    # dataset = DataSet()
-    # print(dataset.get_colnames())
-    print (SITEDICT)
+    dataset = DataSet()
+    print(dataset.get_colnames())
+    # print (SITEDICT)
 
 
 if __name__ == "__main__":
