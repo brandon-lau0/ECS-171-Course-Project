@@ -12,7 +12,9 @@ filePath = "data/merged.csv"
 
 def create_ANN_model(input_dimension, num_layers, num_neurons, output_dimension, activation_func, optimizer, loss):
   '''
-  Creates the ANN model
+  Creates and returns the compiled ANN model object.
+  Note: The caller will need do the following to train/test the model:
+    history = model.fit(data_frame, one_hot_encoder, epochs=20, other_parameters...)
 
   Parameters:
   input_dimension (int) - number of inputs the ANN model takes in
