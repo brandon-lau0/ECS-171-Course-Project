@@ -1,7 +1,13 @@
 import os
+import sys
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import LocalOutlierFactor
+from statistics import mean
+
+sys.path.insert(0, './data')
+import sitedict
+from sitedict import *
 
 # Class that will read, clean, and bin data
 class DataSet():
@@ -21,7 +27,7 @@ class DataSet():
         if remove_outliers:
             self.remove_outliers()
 
-    # Returns a cleaned dataframe with the columns of the features removed
+    # Returns a cleaned dataframe with the columns of the features removed  
     # features: an array of strings of feature names
     # ex. ['mpg', 'car name']
     # df (optional): dataframe, if not specified will use self.df
@@ -66,3 +72,15 @@ class DataSet():
 
     def get_cleaned_df(self):
         return self.cleaned_df
+
+    # Returns a df of sites within a specified radius proportion
+    def get_df_of_radius(self, proportion, df=None):
+        longitude_center, latitude_center = get_center_coordinates()
+        
+
+    def get_center_coordinates(self):
+        sites = list(SITEDICT.keys())
+        longitude_center = mean(float(SITEDICT[site]["long"]) for site in sites)
+        latitude_center = mean(float(SITEDICT[site]["lat"]) for site in sites)
+        return longitude_center, latitude_center
+            
