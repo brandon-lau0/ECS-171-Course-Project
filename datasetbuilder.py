@@ -72,7 +72,7 @@ class DataSet_Builder():
 
     def _clean_df(self):
         # TODO: drop off rows with blank values for x or y col
-        self.df = self.df
+        self.df = self.df.dropna()
 
     def _use_timestep(self):
         # TODO: average or remove rows based on the timestep
