@@ -85,14 +85,21 @@ def main():
     # after = len(new_df.index)
     # print(f"Proportion remaining: {after/before}")
 
+    if len(sys.argv) != 3:
+        print("Usage Ex: py main.py params.json ann_params.json")
+        sys.exit()
+
+    param_file = sys.argv[1]
+    ann_param_file = sys.argv[2]
+
     param_builder()
 
     l_params = []
-    with open('params.json', 'r') as fin:
+    with open(param_file, 'r') as fin:
         l_params = json.load(fin)
 
     l_ann_params = []
-    with open('ann_params.json','r') as fin:
+    with open(ann_param_file,'r') as fin:
         l_ann_params = json.load(fin)
 
     for params in l_params:
