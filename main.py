@@ -3,20 +3,15 @@ import dataset
 from dataset import *
 import datasetbuilder
 import itertools
+import json
 from datasetbuilder import *
 sys.path.insert(0, './data')
 import sitedict
 from sitedict import *
 
 
-def main():
-    # dataset = DataSet()
-    # # print(dataset.get_colnames())
-    # # print (SITEDICT)
-    # before = len(dataset.df.index)
-    # new_df = dataset.get_df_of_radius(1)
-    # after = len(new_df.index)
-    # print(f"Proportion remaining: {after/before}")
+def param_builder():
+    l_params = []
 
     l_xcols = [["Latitude","Longitude"],["Latitude"]]
     # currently assuming same len as xcols
@@ -37,46 +32,91 @@ def main():
     l_rectradius = [0.1, 0.25, 0.5, 0.75, 0.9, 1]
 
 
-    # This is so horrible
-    # I want to change this to read the combinations from a file and log results
-    #   to a file so when my laptop crashes, we can pick back up where it died
-    # We're talking like thousands of combinations here
     for xcols, ycols in zip(l_xcols, l_ycols):
         for timestep in l_timestep:
             for rectradius in l_rectradius:
-                databuilder = DataSet_Builder()
-                databuilder.set_xcols(xcols)
-                databuilder.set_ycols(ycols)
-                databuilder.set_timestep(timestep)
-                databuilder.use_rect_radius(rectradius)
-
                 # combinations of optional dataset parameters
                 for (i, j, k) in list(itertools.product([0,1], repeat=3)):
-                    if i == 1:
-                         databuilder.remove_outliers()
-                    if j == 1:
-                        databuilder.scale_data()
-                    if k == 1:
-                        databuilder.use_pca()
+                    params = {}
+                    params["xcols"] = xcols
+                    params["ycols"] = ycols
+                    params["timestep"] = timestep
+                    params["rectradius"] = rectradius
+                    params["i"] = i
+                    params["j"] = j
+                    params["k"] = k
+
+                    l_params.append(params)
 
 
-                    dataset = databuilder.build_dataset()
+    l_ann_params = []
+    for optimizer in l_optimizer:
+        for hiddenlayer in l_hiddenlayer:
+            for numneuron in l_numneuron:
+                for loss in l_loss:
+                    for activation in l_activation:
+                        ann_params = {}
+                        ann_params["optimizer"] = optimizer
+                        ann_params["hiddenlayer"] = hiddenlayer
+                        ann_params["numneuron"] = numneuron
+                        ann_params["loss"] = loss
+                        ann_params["activation"] = activation
+                        l_ann_params.append(ann_params)
 
-                    # TODO: do something with this stuff
-                    for optimizer in l_optimizer:
-                        for hiddenlayer in l_hiddenlayer:
-                            for numneuron in l_numneuron:
-                                for loss in l_loss:
-                                    for activation in l_activation:
-                                        params = {}
-                                        params["optimizer"] = optimizer
-                                        params["hiddenlayer"] = hiddenlayer
-                                        params["numneuron"] = numneuron
-                                        params["loss"] = loss
-                                        params["activation"] = activation
-                                        dataset.run_ANN(params)
-                    dataset.run_OLS()
-                    dataset.run_Time()
+
+
+
+
+    with open('params.json', 'w') as fout:
+        json.dump(l_params, fout)
+
+    with open('ann_params.json','w') as fout:
+        json.dump(l_ann_params, fout)
+
+
+
+
+def main():
+    # dataset = DataSet()
+    # # print(dataset.get_colnames())
+    # # print (SITEDICT)
+    # before = len(dataset.df.index)
+    # new_df = dataset.get_df_of_radius(1)
+    # after = len(new_df.index)
+    # print(f"Proportion remaining: {after/before}")
+
+    param_builder()
+
+    l_params = []
+    with open('params.json', 'r') as fin:
+        l_params = json.load(fin)
+
+    l_ann_params = []
+    with open('ann_params.json','r') as fin:
+        l_ann_params = json.load(fin)
+
+    for params in l_params:
+        databuilder = DataSet_Builder()
+        databuilder.set_xcols(params["xcols"])
+        databuilder.set_ycols(params["ycols"])
+        databuilder.set_timestep(params["timestep"])
+        databuilder.use_rect_radius(params["rectradius"])
+
+        if params["i"] == 1:
+            databuilder.remove_outliers()
+        if params["j"] == 1:
+            databuilder.scale_data()
+        if params["k"] == 1:
+            databuilder.use_pca()
+
+        dataset = databuilder.build_dataset()
+
+        for ann_params in l_ann_params:
+            dataset.run_ANN(ann_params)
+
+        dataset.run_OLS()
+        dataset.run_Time()
+
 
 
 
