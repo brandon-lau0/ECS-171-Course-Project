@@ -1,1 +1,1 @@
-[{"xcols": ["Latitude", "Longitude"], "ycols": ["SNWD.I-1 (in) "], "timestep": "daily", "rectradius": 0.05, "i": 0, "j": 1, "k": 1}]
+[{"xcols": ["Latitude", "Longitude"], "ycols": ["SNWD.I-1 (in) "], "timestep": "daily", "rectradius": 0.25, "remove_outliers": 0, "scale_data": 1, "use_pca": 0}]

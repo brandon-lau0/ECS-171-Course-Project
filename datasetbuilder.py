@@ -14,6 +14,7 @@ from sklearn.decomposition import PCA
 sys.path.insert(0, './data')
 import sitedict
 from sitedict import *
+import joblib
 
 # used in format_date() and get_past_dates()
 
@@ -35,6 +36,8 @@ class DataSet_Builder():
         self.xcols = []
         self.ycols = []
         self.timestep = Timestep.daily
+        self.pca = PCA(.95)
+        self.scaler = MinMaxScaler()
 
         # data is in a folder called data
         csvpath = os.path.join(os.getcwd(), "data", "merged.csv")
@@ -100,32 +103,42 @@ class DataSet_Builder():
 
     def use_pca(self):
         # change df, xcols, and ycols appropriately
-        pca = PCA(.95)
+
         old_df = self.df[self.xcols]
-        print(self.xcols)
-        principalComponents = pca.fit_transform(old_df) # #drop(['Date'], axis=1)
+        principalComponents = self.pca.fit_transform(old_df) # #drop(['Date'], axis=1)
         principalDf = pd.DataFrame(data = principalComponents)
-        self.df = self.df.drop(self.xcols, axis=1)
+        # self.df = self.df.drop(self.xcols, axis=1)
         self.df = pd.concat([self.df, principalDf], axis=1)
 
+
         self.xcols = list(principalDf.columns)
+
+        pca_filename = "pca.save"
+        joblib.dump(self.pca, pca_filename)
+
+
 
     def scale_data(self):
         # min max scaling just on the xcols
         # optional
-        scaler = MinMaxScaler()
-        scaler.fit(self.df.loc[:,self.xcols])
-        self.df[self.xcols] = scaler.transform(self.df.loc[:,self.xcols])
+
+        self.scaler.fit(self.df.loc[:,self.xcols])
+        self.df[self.xcols] = self.scaler.transform(self.df.loc[:,self.xcols])
+
+        scaler_filename = "scaler.save"
+        joblib.dump(self.scaler, scaler_filename)
+
+        print(self.df["day_of_year_sin"].min())
 
     def use_rect_radius(self, proportion):
         # proportion is a number 0-1 where 1 is all sites, 0 is none
         # 0.5 contains approximately half the sites centered at the CoM
         self.df = self._get_df_of_radius(proportion)
 
-    def build_dataset(self):
+    def build_dataset(self, origxcols, scale_data):
 
         self._use_timestep()
-        return DataSet(self.df, self.xcols, self.ycols)
+        return DataSet(self.df, self.xcols, self.ycols, self.pca, origxcols, self.scaler, scale_data)
 
     def clean_df(self):
         # drop off rows with blank values for x or y col

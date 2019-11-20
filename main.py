@@ -42,9 +42,9 @@ def param_builder():
                     params["ycols"] = ycols
                     params["timestep"] = timestep
                     params["rectradius"] = rectradius
-                    params["i"] = i
-                    params["j"] = j
-                    params["k"] = k
+                    params["remove_outliers"] = i
+                    params["scale_data"] = j
+                    params["use_pca"] = k
 
                     l_params.append(params)
 
@@ -103,6 +103,8 @@ def main():
         l_ann_params = json.load(fin)
 
     for params in l_params:
+        xcols = params["xcols"].copy()
+
         databuilder = DataSet_Builder()
         databuilder.set_xcols(params["xcols"])
         databuilder.set_ycols(params["ycols"])
@@ -111,16 +113,15 @@ def main():
         databuilder.set_timestep(params["timestep"])
         databuilder.use_rect_radius(params["rectradius"])
 
-        if params["i"] == 1:
+        if params["remove_outliers"] == 1:
             databuilder.remove_outliers()
-        if params["k"] == 1:
+        if params["use_pca"] == 1:
             databuilder.use_pca()
-        if params["j"] == 1:
+        if params["scale_data"] == 1:
             databuilder.scale_data()
 
-        dataset = databuilder.build_dataset()
+        dataset = databuilder.build_dataset(xcols, params["scale_data"])
 
-        print(dataset.xcols)
 
         print(dataset.impute_inputs("2019-11-30", params["timestep"]))
 

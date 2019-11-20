@@ -1,20 +1,24 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 
 # used in format_date() and get_past_dates()
 from datetime import datetime
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
+import joblib
 
 # Class built by DataSet_Builder
 # Do not construct a DataSet object yourself
 class DataSet():
-    def __init__(self, df, xcols, ycols):
+    def __init__(self, df, xcols, ycols, pca, origxcols, scaler, scale_data):
         self.df = df
         self.xcols = xcols
         self.ycols = ycols
-
-        print(self.df)
+        self.pca = pca
+        self.origxcols = origxcols
+        self.scaler = scaler
+        self.scale_data = scale_data
 
         # set default split of 0.3
         self.set_split(0.3)
@@ -63,12 +67,50 @@ class DataSet():
 
 
     def impute_inputs(self, future_date, time_step):
+
+
+
+
+
         rows = self._get_past_dates(future_date, time_step)
-        print(rows)
 
         inputs = []
-        for col in self.xcols:
+
+        date_obj = datetime.strptime(future_date, '%Y-%m-%d')
+        day_of_year = date_obj.timetuple().tm_yday
+
+
+
+        for col in self.origxcols:
             inputs.append(rows[col].mean())
+
+        inputs.append(np.sin(2 * np.pi * day_of_year/365))
+        inputs.append(np.cos(2 * np.pi * day_of_year/365))
+
+        print(inputs)
+
+        cols =  self.origxcols +  ["day_of_year_sin","day_of_year_cos"]
+        if "day_of_year_sin" not in self.xcols: # PCA
+            self.pca = joblib.load("pca.save")
+            singledf = pd.DataFrame(columns=cols)
+            singledf.loc[0] = inputs
+
+            vals = self.pca.transform(singledf)
+            inputdf = pd.DataFrame(data=vals)
+            inputs = list(inputdf.iloc[0])
+            cols = list(inputdf.columns)
+
+
+
+        if self.scale_data == 1:
+            self.scaler = joblib.load("scaler.save")
+            singledf = pd.DataFrame(columns = cols)
+            singledf.loc[0] = inputs
+            vals = self.scaler.transform(singledf)
+            inputdf = pd.DataFrame(data=vals)
+
+            # only need to scale last two cols
+            inputs = inputs[:2] + list(inputdf.iloc[0])[2:]
 
         return inputs
 
@@ -80,7 +122,6 @@ class DataSet():
 
         # find the first year in the dataset
         first_date = str(self.df["Date"].iloc[0].date())
-        print(first_date)
         first_date_object = datetime.strptime(first_date, date_format_string)
         first_year = first_date_object.year
 
