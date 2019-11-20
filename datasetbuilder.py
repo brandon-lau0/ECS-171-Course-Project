@@ -4,7 +4,8 @@ import pandas as pd
 import enum
 import dataset
 from dataset import *
-from datetime import date
+from datetime import timedelta
+from datetime import datetime
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import MinMaxScaler
 from statistics import mean
@@ -44,6 +45,7 @@ class DataSet_Builder():
         clf = IsolationForest(n_estimators=20, contamination=0.1, behaviour='new')
         pred = clf.fit_predict(self.df.loc[:,self.xcols + self.ycols])
         self.df = self.df[pred!=-1]
+        self.df = self.df.reset_index(drop=True)
 
     def set_xcols(self, xcols):
         self.xcols = xcols
@@ -57,22 +59,15 @@ class DataSet_Builder():
         self.timestep = Timestep[timestep]
 
     def use_pca(self):
-        # TODO: if using pca, change df, xcols, and ycols appropriately
+        # change df, xcols, and ycols appropriately
         pca = PCA(.95)
-        print(self.df.dtypes)
-        print(self.df)
         old_df = self.df[self.xcols]
-        principalComponents = pca.fit_transform(self.df[self.xcols]) # #drop(['Date'], axis=1)
+        principalComponents = pca.fit_transform(old_df) # #drop(['Date'], axis=1)
         principalDf = pd.DataFrame(data = principalComponents)
-        #principalDf = pd.DataFrame(pca.components_, columns=self.df[self.xcols].columns)
-        self.df = pd.concat([principalDf, self.df[self.ycols]], axis = 1)
-        if (len(old_df.columns) != len(principalDf.columns)):
-            newFeatures = []
-            for col in self.df:
-                newFeatures.append('Feature' + str(col))
-            self.xcols = newFeatures
-        print("x cols:", self.xcols)
-        print("y cols:", self.ycols)
+        self.df = self.df.drop(self.xcols, axis=1)
+        self.df = pd.concat([self.df, principalDf], axis=1)
+
+        self.xcols = list(principalDf.columns)
 
     def scale_data(self):
         # min max scaling just on the xcols
@@ -97,6 +92,7 @@ class DataSet_Builder():
         for col in self.xcols + self.ycols:
             self.df.drop(self.df.index[self.df[col] == -99.9], inplace = True)
         self.df = self.df.dropna(subset=self.xcols+self.ycols)
+        self.df = self.df.reset_index(drop=True)
 
     def _use_timestep(self):
         # if timestep is weekly, average for the week
@@ -106,6 +102,8 @@ class DataSet_Builder():
 
     def _weekly_average(self):
         # round down the week
+
+
         self.df['Date'] = pd.to_datetime(self.df['Date']) - pd.to_timedelta(7, unit='d')
 
         # within a site, average same dates
@@ -154,7 +152,7 @@ class DataSet_Builder():
         if df is None:
             df = self.df
 
-        return df[df["Site Id"].isin(valid_sites)]
+        return df[df["Site Id"].isin(valid_sites)].reset_index(drop=True)
 
 
     def _get_center_coordinates(self):

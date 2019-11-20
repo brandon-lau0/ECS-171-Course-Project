@@ -107,16 +107,16 @@ def main():
         databuilder.set_xcols(params["xcols"])
         databuilder.set_ycols(params["ycols"])
         databuilder.clean_df()
-        
+
         databuilder.set_timestep(params["timestep"])
         databuilder.use_rect_radius(params["rectradius"])
 
         if params["i"] == 1:
             databuilder.remove_outliers()
-        if params["j"] == 1:
-            databuilder.scale_data()
         if params["k"] == 1:
             databuilder.use_pca()
+        if params["j"] == 1:
+            databuilder.scale_data()
 
         dataset = databuilder.build_dataset()
 
