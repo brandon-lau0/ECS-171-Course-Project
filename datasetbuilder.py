@@ -6,7 +6,8 @@ import dataset
 from dataset import *
 from sklearn.neighbors import LocalOutlierFactor
 from statistics import mean
-
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.decomposition import PCA
 sys.path.insert(0, './data')
 import sitedict
 from sitedict import *
@@ -56,7 +57,21 @@ class DataSet_Builder():
 
     def use_pca(self):
         # TODO: if using pca, change df, xcols, and ycols appropriately
-        self.df = self.df
+        pca = PCA(.95)
+        print(self.df.dtypes)
+        print(self.df)
+        old_df = self.df[self.xcols]
+        principalComponents = pca.fit_transform(self.df[self.xcols]) # #drop(['Date'], axis=1)
+        principalDf = pd.DataFrame(data = principalComponents)
+        #principalDf = pd.DataFrame(pca.components_, columns=self.df[self.xcols].columns)
+        self.df = pd.concat([principalDf, self.df[self.ycols]], axis = 1)
+        if (len(old_df.columns) != len(principalDf.columns)):
+            newFeatures = []
+            for col in self.df:
+                newFeatures.append('Feature' + str(col))
+            self.xcols = newFeatures
+        print("x cols:", self.xcols)
+        print("y cols:", self.ycols)
 
     def scale_data(self):
         # TODO: scaling on data: min/max
