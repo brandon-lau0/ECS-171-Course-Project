@@ -37,7 +37,11 @@ class DataSet_Builder():
     def remove_outliers(self):
         #optional
         # TODO
-        self.df = self.df
+        # Prints number of outliers found with IsolationForest
+        # Returns a new df that doesn't contain the outliers
+        clf = IsolationForest(n_estimators=20, contamination=0.1, behaviour='new')
+        pred = clf.fit_predict(self.df.loc[:,"WTEQ.I-1 (in) ":])
+        self.df = self.df[pred!=-1]
 
     def set_xcols(self, xcols):
         self.xcols = xcols
@@ -58,7 +62,11 @@ class DataSet_Builder():
         # TODO: scaling on data: min/max
         # what do we do for dates?
         # optional
-        self.df = self.df
+        # self.df = self.df
+        # DOESN'T WORK YET
+        scaler = MinMaxScaler()
+        scaler.fit(self.df)
+        self.df = scaler.transform(self.df)
 
     def use_rect_radius(self, proportion):
         # proportion is a number 0-1 where 1 is all sites, 0 is none
@@ -72,6 +80,9 @@ class DataSet_Builder():
 
     def _clean_df(self):
         # TODO: drop off rows with blank values for x or y col
+        # DOESN'T WORK YET
+        for col in self.df.columns:
+            self.df.drop(self.df.index[self.df[col] == -99.9], inplace = True)
         self.df = self.df.dropna()
 
     def _use_timestep(self):

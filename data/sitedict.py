@@ -8,13 +8,22 @@
 # includes the data directory
 
 import os
+import json
 
 SITEDICT = {}
-with open(os.path.join(os.getcwd(), "data", "info.txt")) as f:
-    for line in f:
-        (name, id, lat, long) = line.split("\t")
-        innerdict = {}
-        innerdict["name"] = name
-        innerdict["lat"] = lat
-        innerdict["long"] = long
-        SITEDICT[str(id)] = innerdict
+
+sitedictpath = os.path.join(os.getcwd(), "sitedict.json")
+if os.path.exists(sitedictpath):
+    with open(sitedictpath, 'r') as fin:
+        SITEDICT = json.load(fin)
+else:
+    with open(os.path.join(os.getcwd(), "data", "info.txt")) as f:
+        for line in f:
+            (name, id, lat, long) = line.split("\t")
+            innerdict = {}
+            innerdict["name"] = name
+            innerdict["lat"] = lat
+            innerdict["long"] = long
+            SITEDICT[str(id)] = innerdict
+    with open(sitedictpath, 'w') as fout:
+        json.dump(SITEDICT, fout)

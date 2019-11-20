@@ -29,7 +29,7 @@ def param_builder():
     l_timestep = []
     for timestep in Timestep:
         l_timestep.append(timestep.name)
-    l_rectradius = [0.1, 0.25, 0.5, 0.75, 0.9, 1]
+    l_rectradius = [0.25, 0.5, 0.75, 1]
 
 
     for xcols, ycols in zip(l_xcols, l_ycols):
