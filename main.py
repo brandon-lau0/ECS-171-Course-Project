@@ -13,17 +13,25 @@ from sitedict import *
 def param_builder():
     l_params = []
 
-    l_xcols = [["Latitude","Longitude"],["Latitude"]]
+    l_xcols = [["WTEQ.I-1 (in) ",
+                "PREC.I-1 (in) ","TOBS.I-1 (degC) ","BATT.I-1 (volt) ",
+                "TMAX.D-1 (degC) ","TMIN.D-1 (degC) ","TAVG.D-1 (degC) ",
+                "SNWD.I-1 (in) ","SMS.I-1:-2 (pct)  (silt)",
+                "SMS.I-1:-8 (pct)  (silt)","SMS.I-1:-20 (pct)  (silt)",
+                "STO.I-1:-2 (degC) ","STO.I-1:-8 (degC) ","STO.I-1:-20 (degC) ",
+                "SAL.I-1:-2 (gram) ","SAL.I-1:-8 (gram) ","SAL.I-1:-20 (gram) ",
+                "RDC.I-1:-2 (unit) ","RDC.I-1:-8 (unit) ","RDC.I-1:-20 (unit) "]]
+    # l_xcols = [["Latitude","Longitude"],["Latitude"]]
     # currently assuming same len as xcols
     # if always just snwd, don't need
-    l_ycols = [["SNWD.I-1 (in) "], ["SNWD.I-1 (in) "]]
+    l_ycols = [["SNWD.I-1 (in) "]]
 
     # ANN only
-    l_optimizer = []
-    l_hiddenlayer = []
-    l_numneuron = []
-    l_loss = []
-    l_activation = []
+    l_optimizer = ["sgd","rmsprop"]
+    l_activation = ["softmax","relu","sigmoid","tanh","linear"]
+    l_loss = ["mean_squared_error"]
+    l_hiddenlayer = [1, 2, 3]
+    l_numneuron = [3, 6, 9, 12]
 
     # All
     l_timestep = []
