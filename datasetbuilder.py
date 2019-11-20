@@ -4,6 +4,7 @@ import pandas as pd
 import enum
 import dataset
 from dataset import *
+from datetime import date
 from sklearn.neighbors import LocalOutlierFactor
 from statistics import mean
 
@@ -14,7 +15,6 @@ from sitedict import *
 class Timestep(enum.Enum):
     daily = 1
     weekly = 2
-    biweekly = 3
 
 # Builder for DataSet class
 class DataSet_Builder():
@@ -81,9 +81,9 @@ class DataSet_Builder():
     def _clean_df(self):
         # TODO: drop off rows with blank values for x or y col
         # DOESN'T WORK YET
-        for col in self.df.columns:
+        for col in self.xcols + self.ycols:
             self.df.drop(self.df.index[self.df[col] == -99.9], inplace = True)
-        self.df = self.df.dropna()
+        self.df = self.df.dropna(subset=self.xcols+self.ycols)
 
     def _use_timestep(self):
         # TODO: average or remove rows based on the timestep
@@ -92,7 +92,15 @@ class DataSet_Builder():
 
         # use self.timestep to read the timestep
 
-        self.df = self.df
+        if self.timestep == Timestep.weekly:
+            self.df = self._weekly_average()
+
+    def _weekly_average(self):
+        print(self.df)
+        self.df['Date'] = pd.to_datetime(self.df['Date']) - pd.to_timedelta(7, unit='d')
+        self.df = self.df.groupby(['Site Id', pd.Grouper(key='Date', freq='W-MON')]).mean().reset_index()
+        print(self.df)
+        return self.df
 
     # Returns a df of sites within a specified radius proportion
     def _get_df_of_radius(self, proportion, df=None):

@@ -47,8 +47,12 @@ class DataSet():
 
     def run_Time(self):
         # will change name when I figure out what it's called
+        self.df = self._averaged_sites()
         return "TODO"
 
+    def _averaged_sites(self):
+        # average the sites for each week
+        return self.df
 
 
     # # Returns a tuple of the training and testing dataframes
