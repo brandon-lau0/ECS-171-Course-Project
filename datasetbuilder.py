@@ -5,7 +5,8 @@ import enum
 import dataset
 from dataset import *
 from datetime import date
-from sklearn.neighbors import LocalOutlierFactor
+from sklearn.ensemble import IsolationForest
+from sklearn.preprocessing import MinMaxScaler
 from statistics import mean
 
 sys.path.insert(0, './data')
@@ -40,7 +41,7 @@ class DataSet_Builder():
         # Prints number of outliers found with IsolationForest
         # Returns a new df that doesn't contain the outliers
         clf = IsolationForest(n_estimators=20, contamination=0.1, behaviour='new')
-        pred = clf.fit_predict(self.df.loc[:,"WTEQ.I-1 (in) ":])
+        pred = clf.fit_predict(self.df.loc[:,self.xcols + self.ycols])
         self.df = self.df[pred!=-1]
 
     def set_xcols(self, xcols):
@@ -51,7 +52,7 @@ class DataSet_Builder():
 
     def set_timestep(self, timestep):
         # timestep is a string
-        # acceptable strs: daily, weekly, biweekly
+        # acceptable strs: daily, weekly
         self.timestep = Timestep[timestep]
 
     def use_pca(self):
@@ -59,14 +60,11 @@ class DataSet_Builder():
         self.df = self.df
 
     def scale_data(self):
-        # TODO: scaling on data: min/max
-        # what do we do for dates?
+        # min max scaling just on the xcols
         # optional
-        # self.df = self.df
-        # DOESN'T WORK YET
         scaler = MinMaxScaler()
-        scaler.fit(self.df)
-        self.df = scaler.transform(self.df)
+        scaler.fit(self.df.loc[:,self.xcols])
+        self.df[self.xcols] = scaler.transform(self.df.loc[:,self.xcols])
 
     def use_rect_radius(self, proportion):
         # proportion is a number 0-1 where 1 is all sites, 0 is none
@@ -74,33 +72,29 @@ class DataSet_Builder():
         self.df = self._get_df_of_radius(proportion)
 
     def build_dataset(self):
-        self._clean_df()
+
         self._use_timestep()
         return DataSet(self.df, self.xcols, self.ycols)
 
-    def _clean_df(self):
-        # TODO: drop off rows with blank values for x or y col
-        # DOESN'T WORK YET
+    def clean_df(self):
+        # drop off rows with blank values for x or y col
+        # treat -99.9 as NaN
         for col in self.xcols + self.ycols:
             self.df.drop(self.df.index[self.df[col] == -99.9], inplace = True)
         self.df = self.df.dropna(subset=self.xcols+self.ycols)
 
     def _use_timestep(self):
-        # TODO: average or remove rows based on the timestep
-        # Note that some days will already be lost either by outliers or
-        #   if they were cleaned, and some weeks won't have any data left
-
-        # use self.timestep to read the timestep
+        # if timestep is weekly, average for the week
 
         if self.timestep == Timestep.weekly:
-            self.df = self._weekly_average()
+            self._weekly_average()
 
     def _weekly_average(self):
-        print(self.df)
+        # round down the week
         self.df['Date'] = pd.to_datetime(self.df['Date']) - pd.to_timedelta(7, unit='d')
+
+        # within a site, average same dates
         self.df = self.df.groupby(['Site Id', pd.Grouper(key='Date', freq='W-MON')]).mean().reset_index()
-        print(self.df)
-        return self.df
 
     # Returns a df of sites within a specified radius proportion
     def _get_df_of_radius(self, proportion, df=None):

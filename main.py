@@ -106,6 +106,8 @@ def main():
         databuilder = DataSet_Builder()
         databuilder.set_xcols(params["xcols"])
         databuilder.set_ycols(params["ycols"])
+        databuilder.clean_df()
+        
         databuilder.set_timestep(params["timestep"])
         databuilder.use_rect_radius(params["rectradius"])
 
