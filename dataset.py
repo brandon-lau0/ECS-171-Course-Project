@@ -87,7 +87,6 @@ class DataSet():
         inputs.append(np.sin(2 * np.pi * day_of_year/365))
         inputs.append(np.cos(2 * np.pi * day_of_year/365))
 
-        print(inputs)
 
         cols =  self.origxcols +  ["day_of_year_sin","day_of_year_cos"]
         if "day_of_year_sin" not in self.xcols: # PCA
@@ -110,7 +109,7 @@ class DataSet():
             inputdf = pd.DataFrame(data=vals)
 
             # only need to scale last two cols
-            inputs = inputs[:2] + list(inputdf.iloc[0])[2:]
+            inputs = inputs[:len(cols)-2] + list(inputdf.iloc[0])[len(cols)-2:]
 
         return inputs
 

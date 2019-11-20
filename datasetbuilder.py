@@ -128,7 +128,6 @@ class DataSet_Builder():
         scaler_filename = "scaler.save"
         joblib.dump(self.scaler, scaler_filename)
 
-        print(self.df["day_of_year_sin"].min())
 
     def use_rect_radius(self, proportion):
         # proportion is a number 0-1 where 1 is all sites, 0 is none
