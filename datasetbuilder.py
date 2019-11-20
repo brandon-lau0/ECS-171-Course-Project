@@ -54,6 +54,7 @@ class DataSet_Builder():
 
     # encodes dates so that cyclical nature of days in year is preserved
     def format_date(self):
+        print(self.df)
         self.df['date_object'] = [datetime.strptime(date, '%m/%d/%Y') for date in self.df['Date']]
         self.df['day_of_year'] = [date_object.timetuple().tm_yday for date_object in self.df['date_object']]
 
