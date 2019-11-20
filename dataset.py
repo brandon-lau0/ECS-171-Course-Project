@@ -61,11 +61,11 @@ class DataSet():
         # question: what are we actually predicting?
         return "TODO"
 
-    def run_OLS(self):
+    def run_OLS(self, filename):
         # retrieve loss and prediction
         # set default split of 0.3
         self.set_split(0.3)
-        run_OLS_predictor(self.get_data_with_date(), self.get_Xtrain(), self.get_Ytrain(), self.get_Xtest(), self.get_Ytest(), self.pred_input)
+        return run_OLS_predictor(self.get_data_with_date(), self.get_Xtrain(), self.get_Ytrain(), self.get_Xtest(), self.get_Ytest(), self.pred_input, filename)
 
     def run_TSNN(self):
         # will change name when I figure out what it's called

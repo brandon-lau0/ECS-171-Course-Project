@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import os
 # import matplotlib.pyplot as matplot
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
@@ -22,7 +23,7 @@ from sklearn.metrics import auc
 # 	MSE = mean_squared_error(y_test, y_pred)
 # 	return(MSE)
 
-def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input):
+def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filename):
 
     # data = data.drop(0, axis=0)
     print(data)
@@ -65,8 +66,8 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input):
     # Resulted MSE = 36.84 & MSE_whole = 30.26
     #	This means prediction using regression model have ~65 accuracy!
     #		(Accuracy defined as 1-MSE)
-    print(MSE)
-    print(MSE_whole)
+    # print(MSE)
+    # print(MSE_whole)
 
     # Here is the "simple" plot that takes ~30 seconds to plot
     #	The blue lines represents actual snow depth, while red lines represents
@@ -79,5 +80,6 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input):
     plt.title('Actual - Predicted')
     plt.ylabel('Inches')
     plt.xlabel('Date')
-    plt.show()
-    return (MSE,output_pred)
+    plt.savefig(os.path.join(os.getcwd(), "results", filename))
+    # print(output_pred[0][0])
+    return MSE,output_pred[0][0]

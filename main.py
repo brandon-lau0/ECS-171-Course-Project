@@ -1,4 +1,5 @@
 import sys
+import os
 import dataset
 from dataset import *
 import datasetbuilder
@@ -13,18 +14,7 @@ from sitedict import *
 def param_builder():
     l_params = []
 
-    l_xcols = [["WTEQ.I-1 (in) ",
-                "PREC.I-1 (in) ","TOBS.I-1 (degC) ","BATT.I-1 (volt) ",
-                "TMAX.D-1 (degC) ","TMIN.D-1 (degC) ","TAVG.D-1 (degC) ",
-                "SNWD.I-1 (in) ","SMS.I-1:-2 (pct)  (silt)",
-                "SMS.I-1:-8 (pct)  (silt)","SMS.I-1:-20 (pct)  (silt)",
-                "STO.I-1:-2 (degC) ","STO.I-1:-8 (degC) ","STO.I-1:-20 (degC) ",
-                "SAL.I-1:-2 (gram) ","SAL.I-1:-8 (gram) ","SAL.I-1:-20 (gram) ",
-                "RDC.I-1:-2 (unit) ","RDC.I-1:-8 (unit) ","RDC.I-1:-20 (unit) "]]
-    # l_xcols = [["Latitude","Longitude"],["Latitude"]]
-    # currently assuming same len as xcols
-    # if always just snwd, don't need
-    l_ycols = [["SNWD.I-1 (in) "]]
+
 
     # ANN only
     l_optimizer = ["sgd","rmsprop"]
@@ -40,21 +30,19 @@ def param_builder():
     l_rectradius = [0.25, 0.5, 0.75, 1]
 
 
-    for xcols, ycols in zip(l_xcols, l_ycols):
-        for timestep in l_timestep:
-            for rectradius in l_rectradius:
-                # combinations of optional dataset parameters
-                for (i, j, k) in list(itertools.product([0,1], repeat=3)):
-                    params = {}
-                    params["xcols"] = xcols
-                    params["ycols"] = ycols
-                    params["timestep"] = timestep
-                    params["rectradius"] = rectradius
-                    params["remove_outliers"] = i
-                    params["scale_data"] = j
-                    params["use_pca"] = k
+    for timestep in l_timestep:
+        for rectradius in l_rectradius:
+            # combinations of optional dataset parameters
+            for (i, j, k) in list(itertools.product([0,1], repeat=3)):
+                params = {}
+                params["timestep"] = timestep
+                params["rectradius"] = rectradius
+                params["remove_outliers"] = i
+                params["scale_data"] = j
+                params["use_pca"] = k
+                params["fileparam"] = f"{timestep}-{rectradius}-{i}-{j}-{k}.png"
 
-                    l_params.append(params)
+                l_params.append(params)
 
 
     l_ann_params = []
@@ -110,12 +98,27 @@ def main():
     with open(ann_param_file,'r') as fin:
         l_ann_params = json.load(fin)
 
+    results = []
+
+    l_xcols = ["WTEQ.I-1 (in) ",
+                "PREC.I-1 (in) ","TOBS.I-1 (degC) ","BATT.I-1 (volt) ",
+                "TMAX.D-1 (degC) ","TMIN.D-1 (degC) ","TAVG.D-1 (degC) ",
+                "SNWD.I-1 (in) ","SMS.I-1:-2 (pct)  (silt)",
+                "SMS.I-1:-8 (pct)  (silt)","SMS.I-1:-20 (pct)  (silt)",
+                "STO.I-1:-2 (degC) ","STO.I-1:-8 (degC) ","STO.I-1:-20 (degC) ",
+                "SAL.I-1:-2 (gram) ","SAL.I-1:-8 (gram) ","SAL.I-1:-20 (gram) ",
+                "RDC.I-1:-2 (unit) ","RDC.I-1:-8 (unit) ","RDC.I-1:-20 (unit) "]
+    # l_xcols = [["Latitude","Longitude"],["Latitude"]]
+    # currently assuming same len as xcols
+    # if always just snwd, don't need
+    l_ycols = ["SNWD.I-1 (in) "]
+
     for params in l_params:
-        xcols = params["xcols"].copy()
+        xcols = l_xcols.copy()
 
         databuilder = DataSet_Builder()
-        databuilder.set_xcols(params["xcols"])
-        databuilder.set_ycols(params["ycols"])
+        databuilder.set_xcols(xcols)
+        databuilder.set_ycols(l_ycols)
         databuilder.clean_df()
 
         databuilder.set_timestep(params["timestep"])
@@ -128,19 +131,29 @@ def main():
         if params["scale_data"] == 1:
             databuilder.scale_data()
 
-        dataset = databuilder.build_dataset(xcols, params["scale_data"])
+        dataset = databuilder.build_dataset(l_xcols, params["scale_data"])
 
 
-        print(dataset.impute_inputs("2019-11-30", params["timestep"]))
+        print(dataset.impute_inputs("2019-12-01", params["timestep"]))
 
         # for ann_params in l_ann_params:
         #     dataset.run_ANN(ann_params)
 
-        dataset.run_OLS()
+        row = {}
+        (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
+        row["method"] = "OLS"
+        row["mse"] = mse
+        row["pred"] = pred
+        row["filename"] = "OLS" + params["fileparam"]
+        row["params"] = params
+        results.append(row)
+
         # dataset.run_TSNN()
 
 
-
+    res_path = os.path.join(os.getcwd(), "results", "results.json")
+    with open(res_path, 'w') as fout:
+        json.dump(results, fout)
 
 
 if __name__ == "__main__":
