@@ -133,11 +133,11 @@ def main():
 
         print(dataset.impute_inputs("2019-11-30", params["timestep"]))
 
-        for ann_params in l_ann_params:
-            dataset.run_ANN(ann_params)
+        # for ann_params in l_ann_params:
+        #     dataset.run_ANN(ann_params)
 
         dataset.run_OLS()
-        dataset.run_Time()
+        # dataset.run_TSNN()
 
 
 

@@ -1,5 +1,9 @@
 import pandas as pd
 import numpy as np
+import TSNN
+from TSNN import *
+import OLS
+from OLS import *
 from sklearn.model_selection import train_test_split
 
 # used in format_date() and get_past_dates()
@@ -19,6 +23,7 @@ class DataSet():
         self.origxcols = origxcols
         self.scaler = scaler
         self.scale_data = scale_data
+        self.pred_input = []
 
         # set default split of 0.3
         self.set_split(0.3)
@@ -47,6 +52,10 @@ class DataSet():
     def get_df(self):
         return self.df
 
+    def get_data_with_date(self):
+        fullcols = ["Date"] + self.xcols + self.ycols
+        return self.df.loc[:,fullcols]
+
     def run_ANN(self, params):
         # retrieve loss and prediction
         # question: what are we actually predicting?
@@ -54,12 +63,21 @@ class DataSet():
 
     def run_OLS(self):
         # retrieve loss and prediction
-        return "TODO"
+        # set default split of 0.3
+        self.set_split(0.3)
+        run_OLS_predictor(self.get_data_with_date(), self.get_Xtrain(), self.get_Ytrain(), self.get_Xtest(), self.get_Ytest(), self.pred_input)
 
-    def run_Time(self):
+    def run_TSNN(self):
         # will change name when I figure out what it's called
         self._averaged_sites()
-        return "TODO"
+        # dataset = read_csv('test.csv', header=None)
+        fullcols = self.xcols + self.ycols
+        models = get_future_models(self.df.loc[:,fullcols], num_epochs=20, back_steps=2, future_steps=2)
+
+        input_data = np.array([[list(range(0,len(self.pred_input))), self.pred_input]])
+        input_data = input_data.reshape(1,2,len(self.pred_input))
+        preds = get_predictions(input_data, models)
+        print(preds)
 
     def _averaged_sites(self):
         # average the sites for each week
@@ -111,7 +129,7 @@ class DataSet():
             # only need to scale last two cols
             inputs = inputs[:len(cols)-2] + list(inputdf.iloc[0])[len(cols)-2:]
 
-        return inputs
+        self.pred_input = inputs
 
 
     # given a date ('year-month-day' string) in the future, returns a list that contains data from past dates at the same time in the year
