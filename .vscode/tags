@@ -1,0 +1,72 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+dataset.py	../dataset.py	1;"	kind:file	line:1
+DataSet	../dataset.py	/^class DataSet():$/;"	kind:class	line:6
+__init__	../dataset.py	/^    def __init__(self, df, xcols, ycols):$/;"	kind:member	line:7
+set_split	../dataset.py	/^    def set_split(self, test_prop):$/;"	kind:member	line:16
+get_Xtrain	../dataset.py	/^    def get_Xtrain(self):$/;"	kind:member	line:21
+get_Xtest	../dataset.py	/^    def get_Xtest(self):$/;"	kind:member	line:24
+get_Ytrain	../dataset.py	/^    def get_Ytrain(self):$/;"	kind:member	line:27
+get_Ytest	../dataset.py	/^    def get_Ytest(self):$/;"	kind:member	line:30
+get_colnames	../dataset.py	/^    def get_colnames(self):$/;"	kind:member	line:33
+get_df	../dataset.py	/^    def get_df(self):$/;"	kind:member	line:36
+run_ANN	../dataset.py	/^    def run_ANN(self, params):$/;"	kind:member	line:39
+run_OLS	../dataset.py	/^    def run_OLS(self):$/;"	kind:member	line:44
+run_Time	../dataset.py	/^    def run_Time(self):$/;"	kind:member	line:48
+_averaged_sites	../dataset.py	/^    def _averaged_sites(self):$/;"	kind:member	line:53
+sitedict.py	../data/sitedict.py	1;"	kind:file	line:1
+SITEDICT	../data/sitedict.py	/^SITEDICT = {}$/;"	kind:variable	line:13
+sitedictpath	../data/sitedict.py	/^sitedictpath = os.path.join(os.getcwd(), "sitedict.json")$/;"	kind:variable	line:15
+SITEDICT	../data/sitedict.py	/^        SITEDICT = json.load(fin)$/;"	kind:variable	line:18
+innerdict	../data/sitedict.py	/^            innerdict = {}$/;"	kind:variable	line:23
+datasetbuilder.py	../datasetbuilder.py	1;"	kind:file	line:1
+Timestep	../datasetbuilder.py	/^class Timestep(enum.Enum):$/;"	kind:class	line:15
+daily	../datasetbuilder.py	/^    daily = 1$/;"	kind:variable	line:16
+weekly	../datasetbuilder.py	/^    weekly = 2$/;"	kind:variable	line:17
+DataSet_Builder	../datasetbuilder.py	/^class DataSet_Builder():$/;"	kind:class	line:20
+__init__	../datasetbuilder.py	/^    def __init__(self):$/;"	kind:member	line:24
+format_date	../datasetbuilder.py	/^    def format_date(self):$/;"	kind:member	line:42
+remove_outliers	../datasetbuilder.py	/^    def remove_outliers(self):$/;"	kind:member	line:69
+set_xcols	../datasetbuilder.py	/^    def set_xcols(self, xcols):$/;"	kind:member	line:78
+set_ycols	../datasetbuilder.py	/^    def set_ycols(self, ycols):$/;"	kind:member	line:81
+set_timestep	../datasetbuilder.py	/^    def set_timestep(self, timestep):$/;"	kind:member	line:84
+use_pca	../datasetbuilder.py	/^    def use_pca(self):$/;"	kind:member	line:89
+scale_data	../datasetbuilder.py	/^    def scale_data(self):$/;"	kind:member	line:93
+use_rect_radius	../datasetbuilder.py	/^    def use_rect_radius(self, proportion):$/;"	kind:member	line:103
+build_dataset	../datasetbuilder.py	/^    def build_dataset(self):$/;"	kind:member	line:108
+_clean_df	../datasetbuilder.py	/^    def _clean_df(self):$/;"	kind:member	line:113
+_use_timestep	../datasetbuilder.py	/^    def _use_timestep(self):$/;"	kind:member	line:120
+_weekly_average	../datasetbuilder.py	/^    def _weekly_average(self):$/;"	kind:member	line:130
+_get_df_of_radius	../datasetbuilder.py	/^    def _get_df_of_radius(self, proportion, df=None):$/;"	kind:member	line:138
+_get_center_coordinates	../datasetbuilder.py	/^    def _get_center_coordinates(self):$/;"	kind:member	line:183
+_get_min_max	../datasetbuilder.py	/^    def _get_min_max(self, key_str):$/;"	kind:member	line:189
+main.py	../main.py	1;"	kind:file	line:1
+param_builder	../main.py	/^def param_builder():$/;"	kind:function	line:13
+main	../main.py	/^def main():$/;"	kind:function	line:79
+firestore_helper.py	../old/firestore_helper.py	1;"	kind:file	line:1
+cred	../old/firestore_helper.py	/^cred = credentials.Certificate(".\/ecs171-f19.json")$/;"	kind:variable	line:13
+db	../old/firestore_helper.py	/^db = firestore.client()$/;"	kind:variable	line:18
+firestore_add	../old/firestore_helper.py	/^def firestore_add(data, collection_name=u'data'):$/;"	kind:function	line:21
+firestore_read	../old/firestore_helper.py	/^def firestore_read(collection_name=u'data'):$/;"	kind:function	line:55
+sample-firestore-usage.py	../old/sample-firestore-usage.py	1;"	kind:file	line:1
+sample_add_data	../old/sample-firestore-usage.py	/^def sample_add_data():$/;"	kind:function	line:10
+sample_read_data	../old/sample-firestore-usage.py	/^def sample_read_data():$/;"	kind:function	line:24
+scrape.py	../scrape.py	1;"	kind:file	line:1
+sites	../scrape.py	/^sites = list(SITEDICT.keys())$/;"	kind:variable	line:14
+df	../scrape.py	/^    df = pd.DataFrame()$/;"	kind:variable	line:16
+lat	../scrape.py	/^    lat = SITEDICT[site]["lat"]$/;"	kind:variable	line:17
+long	../scrape.py	/^    long = SITEDICT[site]["long"]$/;"	kind:variable	line:18
+url	../scrape.py	/^        url = "https:\/\/wcc.sc.egov.usda.gov\/nwcc\/view"$/;"	kind:variable	line:22
+payload	../scrape.py	/^        payload = {$/;"	kind:variable	line:24
+df	../scrape.py	/^        df = df.append(pd.read_csv(os.path.join(os.getcwd(), "temp.csv"),$/;"	kind:variable	line:43
+pklpath	../scrape.py	/^    pklpath = os.path.join(os.getcwd(), "data", f"site{site}.pkl")$/;"	kind:variable	line:54
+merged	../scrape.py	/^merged = pd.DataFrame()$/;"	kind:variable	line:67
+pklpath	../scrape.py	/^    pklpath = os.path.join(os.getcwd(), "data", f"site{site}.pkl")$/;"	kind:variable	line:69
+df	../scrape.py	/^    df = pd.read_pickle(pklpath)$/;"	kind:variable	line:70
+merged	../scrape.py	/^    merged = merged.append(df, ignore_index=True, sort=False)$/;"	kind:variable	line:71
+csvpath	../scrape.py	/^csvpath = os.path.join(os.getcwd(), "data", "merged.csv")$/;"	kind:variable	line:74
+pklpath	../scrape.py	/^pklpath = os.path.join(os.getcwd(), "data", "data.pkl")$/;"	kind:variable	line:75
