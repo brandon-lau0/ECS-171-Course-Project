@@ -1,6 +1,11 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+# used in format_date() and get_past_dates()
+from datetime import datetime
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
+
 # Class built by DataSet_Builder
 # Do not construct a DataSet object yourself
 class DataSet():
@@ -8,6 +13,8 @@ class DataSet():
         self.df = df
         self.xcols = xcols
         self.ycols = ycols
+
+        print(self.df)
 
         # set default split of 0.3
         self.set_split(0.3)
@@ -53,6 +60,62 @@ class DataSet():
     def _averaged_sites(self):
         # average the sites for each week
         self.df = self.df.groupby(['Date'])[self.df.loc[self.xcols[0]:].columns].mean().reset_index()
+
+
+    def impute_inputs(self, future_date, time_step):
+        rows = self._get_past_dates(future_date, time_step)
+        print(rows)
+
+        inputs = []
+        for col in self.xcols:
+            inputs.append(rows[col].mean())
+
+        return inputs
+
+
+    # given a date ('year-month-day' string) in the future, returns a list that contains data from past dates at the same time in the year
+    # if timestep is weekly, round supplied date to the date at beginning of week
+    def _get_past_dates(self, future_date, time_step):
+        date_format_string = '%Y-%m-%d'
+
+        # find the first year in the dataset
+        first_date = str(self.df["Date"].iloc[0].date())
+        print(first_date)
+        first_date_object = datetime.strptime(first_date, date_format_string)
+        first_year = first_date_object.year
+
+        if time_step == 'daily':
+            future_date_object = datetime.strptime(future_date, date_format_string).date()
+        else: # if time_step == 'weekly'
+            date_obj = datetime.strptime(future_date, date_format_string).date()
+            future_date_object = date_obj - timedelta(days=date_obj.weekday())
+
+        # start at the first year with the matching day
+        past_date = datetime(first_year, future_date_object.month, future_date_object.day).date()
+
+        list_of_dates = []
+        while past_date < future_date_object:
+            yesterday = past_date - timedelta(days=1)
+            tomorrow = past_date + timedelta(days=1)
+            list_of_dates.append(yesterday.strftime(date_format_string))
+            list_of_dates.append(past_date.strftime(date_format_string))
+            list_of_dates.append(tomorrow.strftime(date_format_string))
+
+            past_date = past_date + relativedelta(years = 1)
+
+        past_dates = self.df[self.df['Date'].isin(list_of_dates)] # note: might be inefficient
+
+        # while past_date < future_date_object:
+        #     past_dates.append(self.df.loc[df['Date'] == past_date.strftime(date_format_string)]) # FIXME how efficient is this retrieval??
+        #     past_date = past_date + relativedelta(years = 1) # go to same date, 1 year in the future
+
+        # if self.df['Date'] == past_date.strftime(date_format_string):
+        #     past_dates.append(row)
+
+        return past_dates
+        # return []
+
+
 
 
     # # Returns a tuple of the training and testing dataframes

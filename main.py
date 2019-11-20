@@ -120,6 +120,10 @@ def main():
 
         dataset = databuilder.build_dataset()
 
+        print(dataset.xcols)
+
+        print(dataset.impute_inputs("2019-11-30", params["timestep"]))
+
         for ann_params in l_ann_params:
             dataset.run_ANN(ann_params)
 

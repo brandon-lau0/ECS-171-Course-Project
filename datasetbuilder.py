@@ -16,7 +16,7 @@ import sitedict
 from sitedict import *
 
 # used in format_date() and get_past_dates()
-from datetime import datetime
+
 from dateutil.relativedelta import relativedelta
 
 import numpy as np # used in _encode_cyclical_data()
@@ -46,84 +46,34 @@ class DataSet_Builder():
             self.df = pd.read_csv(csvpath, sep=",")
             self.df.to_pickle(pklpath)
 
-        self.format_date()
+
 
 
     # encodes dates so that cyclical nature of days in year is preserved
     def format_date(self):
-        
-        if self.timestep == Timestep.daily:
-            print("daily")
+        self.df['date_object'] = [datetime.strptime(date, '%m/%d/%Y') for date in self.df['Date']]
+        self.df['day_of_year'] = [date_object.timetuple().tm_yday for date_object in self.df['date_object']]
 
-            self.df['date_object'] = [datetime.strptime(date, '%m/%d/%Y') for date in self.df['Date']]
-            
-            self.df['day_of_year'] = [date_object.timetuple().tm_yday for date_object in self.df['date_object']]
+        # don't need this anymore
+        self.df = self.df.drop("date_object",1)
 
-            # data['day'] = data.datetime.dt.month
-            self._encode_cyclical_data('day_of_year', 365) # does not account for leap years; negligible difference
-            
-            # FIXME insert date_object col to front of xcols
+        # data['day'] = data.datetime.dt.month
+        self._encode_cyclical_data('day_of_year', 365) # does not account for leap years; negligible difference
 
-            # TODO be able to take a future date (ex. 2020-07-18) and return 2019-07-18, 2018-07-18, etc. (+/- 1 day)
-                # ACCOUNT FOR leap years, removed outliers (search for closest day, or leave out of average?)
-            
+        self.df = self.df.drop("day_of_year",1)
 
-            print(self.df)
+        # TODO be able to take a future date (ex. 2020-07-18) and return 2019-07-18, 2018-07-18, etc. (+/- 1 day)
+            # ACCOUNT FOR leap years, removed outliers (search for closest day, or leave out of average?)
 
 
-        # convert daily to weekly
-        if self.timestep == Timestep.weekly:
-            print('weekly')
 
 
-            def _weekly_average(self):
-                print(self.df)
-                self.df['Date'] = pd.to_datetime(self.df['Date']) - pd.to_timedelta(7, unit='d')
-                self.df = self.df.groupby(['Site Id', pd.Grouper(key='Date', freq='W-MON')]).mean().reset_index()
-                print(self.df)
-                return self.df
-    
     def _encode_cyclical_data(self, col_name, max_val):
         self.df[col_name + '_sin'] = np.sin(2 * np.pi * self.df[col_name]/max_val)
         self.df[col_name + '_cos'] = np.cos(2 * np.pi * self.df[col_name]/max_val)
 
-    # given a date ('year-month-day' string) in the future, returns a list that contains data from past dates at the same time in the year
-    # if timestep is weekly, round supplied date to the date at beginning of week
-    def get_past_dates(self, future_date, time_step):
-        date_format_string = '%Y-%m-%d'
-        
-        # find the first year in the dataset
-        first_date = self.df['Date', 0]
-        first_date_object = datetime.strptime(first_date, date_format_string)
-        first_year = first_date_object.year
-
-        if time_step == 'daily':
-            future_date_object = datetime.strptime(future_date, date_format_string)
-        else: # if time_step == 'weekly'
-            date_obj = datetime.strptime(future_date, date_format_string).date()
-            future_date_object = date_obj - timedelta(days=date_obj.weekday())
-        
-        # start at the first year with the matching day
-        past_date = datetime.datetime(first_year, future_date_object.month, future_date_object.day)
-
-        list_of_dates = []
-        while past_date < future_date_object:
-            yesterday = past_date - timedelta(days=1)
-            tomorrow = past_date - timedelta(days=1)
-            list_of_dates.append(yesterday.strftime(date_format_string))
-            list_of_dates.append(past_date.strftime(date_format_string))
-            list_of_dates.append(tomorrow.strftime(date_format_string))
-        
-        past_dates = self.df[self.df['Date'].isin(list_of_dates)] # note: might be inefficient
-
-        # while past_date < future_date_object:
-        #     past_dates.append(self.df.loc[df['Date'] == past_date.strftime(date_format_string)]) # FIXME how efficient is this retrieval??
-        #     past_date = past_date + relativedelta(years = 1) # go to same date, 1 year in the future
-
-        # if self.df['Date'] == past_date.strftime(date_format_string):
-        #     past_dates.append(row)
-
-        return past_dates
+        self.xcols.append(col_name + '_sin')
+        self.xcols.append(col_name + '_cos')
 
 
 
@@ -152,6 +102,7 @@ class DataSet_Builder():
         # change df, xcols, and ycols appropriately
         pca = PCA(.95)
         old_df = self.df[self.xcols]
+        print(self.xcols)
         principalComponents = pca.fit_transform(old_df) # #drop(['Date'], axis=1)
         principalDf = pd.DataFrame(data = principalComponents)
         self.df = self.df.drop(self.xcols, axis=1)
@@ -179,6 +130,10 @@ class DataSet_Builder():
     def clean_df(self):
         # drop off rows with blank values for x or y col
         # treat -99.9 as NaN
+
+        self.format_date()
+
+
         for col in self.xcols + self.ycols:
             self.df.drop(self.df.index[self.df[col] == -99.9], inplace = True)
         self.df = self.df.dropna(subset=self.xcols+self.ycols)
@@ -190,26 +145,19 @@ class DataSet_Builder():
         if self.timestep == Timestep.weekly:
             self._weekly_average()
 
+        else:
+            self._adjust_dates()
+
+
+    def _adjust_dates(self):
+        self.df['Date'] = pd.to_datetime(self.df['Date'])
+
     def _weekly_average(self):
-<<<<<<< HEAD
-        # print(self.df)
-=======
         # round down the week
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 5f5b7ba85d50af454e31ae08b18fa3e76717cc93
->>>>>>> 52c871f56fe6e4accdee96c6f2483d0733abbbec
         self.df['Date'] = pd.to_datetime(self.df['Date']) - pd.to_timedelta(7, unit='d')
 
         # within a site, average same dates
         self.df = self.df.groupby(['Site Id', pd.Grouper(key='Date', freq='W-MON')]).mean().reset_index()
-<<<<<<< HEAD
-        # print(self.df)
-        return self.df
-=======
->>>>>>> 5f5b7ba85d50af454e31ae08b18fa3e76717cc93
 
     # Returns a df of sites within a specified radius proportion
     def _get_df_of_radius(self, proportion, df=None):
