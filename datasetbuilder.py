@@ -5,6 +5,7 @@ import enum
 import dataset
 from dataset import *
 from sklearn.neighbors import LocalOutlierFactor
+from sklearn.preprocessing import MinMaxScaler
 from statistics import mean
 
 sys.path.insert(0, './data')
@@ -33,7 +34,7 @@ class DataSet_Builder():
         else:
             self.df = pd.read_csv(csvpath, sep=",")
             self.df.to_pickle(pklpath)
-
+        
     def remove_outliers(self):
         #optional
         # TODO
@@ -58,7 +59,11 @@ class DataSet_Builder():
         # TODO: scaling on data: min/max
         # what do we do for dates?
         # optional
-        self.df = self.df
+        # self.df = self.df
+        # DOESN'T WORK YET
+        scaler = MinMaxScaler()
+        scaler.fit(self.df)
+        self.df = scaler.transform(self.df)
 
     def use_rect_radius(self, proportion):
         # proportion is a number 0-1 where 1 is all sites, 0 is none
@@ -72,6 +77,9 @@ class DataSet_Builder():
 
     def _clean_df(self):
         # TODO: drop off rows with blank values for x or y col
+        # DOESN'T WORK YET
+        for col in self.df.columns:
+            self.df.drop(self.df.index[self.df[col] == -99.9], inplace = True)
         self.df = self.df
 
     def _use_timestep(self):
