@@ -80,7 +80,7 @@ class DataSet_Builder():
         # DOESN'T WORK YET
         for col in self.df.columns:
             self.df.drop(self.df.index[self.df[col] == -99.9], inplace = True)
-        self.df = self.df
+        self.df = self.df.dropna()
 
     def _use_timestep(self):
         # TODO: average or remove rows based on the timestep
