@@ -106,16 +106,20 @@ class DataSet_Builder():
     def use_pca(self):
         # change df, xcols, and ycols appropriately
         old_df = self.df[self.xcols]
+        # print(old_df)
         columns_to_center = old_df.columns.difference(['day_of_year_sin', 'day_of_year_cos'])
         centered_data = stats.zscore(old_df[columns_to_center])
         centered_data = pd.DataFrame(data = centered_data, columns=columns_to_center)
-        new_df = pd.concat([centered_data, old_df[['day_of_year_sin', 'day_of_year_cos']]], axis=1)
+        unchanged = ['day_of_year_sin', 'day_of_year_cos']
+        new_df = pd.concat([centered_data, old_df.loc[:,unchanged]], axis=1)
+        # print(new_df)
         #means = old_df.mean(axis=0)
         # print(self.df[self.xcols])
         # for col in old_df:
 
         principalComponents = self.pca.fit_transform(new_df) # #drop(['Date'], axis=1)
         principalDf = pd.DataFrame(data = principalComponents)
+        print(principalDf)
         # self.df = self.df.drop(self.xcols, axis=1)
         self.df = pd.concat([self.df, principalDf], axis=1)
 

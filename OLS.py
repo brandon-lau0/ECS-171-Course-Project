@@ -75,6 +75,9 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     #	If you lack patients, please read the attacted screenshot
     # plt.plot(data['Date'], data["SNWD.I-1 (in) "] ,color='blue')
     # plt.plot(data['Date'], y_pred_whole, color='red')
+    print(data)
+    print(data["Date"])
+    print( data["SNWD.I-1 (in) "])
     plt.plot(data['Date'],  data["SNWD.I-1 (in) "]-y_pred_whole, color='green')
     plt.legend
     plt.title('Actual - Predicted')

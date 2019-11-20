@@ -1,1 +1,1 @@
-[{"method": "OLS", "mse": 3.403478649359218e-27, "pred": 13.005235602094265, "filename": "OLSdaily-0.25-0-0-0.png", "params": {"timestep": "daily", "rectradius": 0.25, "remove_outliers": 0, "scale_data": 0, "use_pca": 0, "fileparam": "daily-0.25-0-0-0.png"}}]
+[{"method": "OLS", "mse": 1.5716430913430529e-27, "pred": 13.005235602094244, "filename": "OLSdaily-0.25-0-0-0.png", "params": {"timestep": "daily", "rectradius": 0.25, "remove_outliers": 0, "scale_data": 0, "use_pca": 0, "fileparam": "daily-0.25-0-0-0.png"}}]
