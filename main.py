@@ -139,16 +139,16 @@ def main():
         # for ann_params in l_ann_params:
         #     dataset.run_ANN(ann_params)
 
-        row = {}
-        (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
-        row["method"] = "OLS"
-        row["mse"] = mse
-        row["pred"] = pred
-        row["filename"] = "OLS" + params["fileparam"]
-        row["params"] = params
-        results.append(row)
+        # row = {}
+        # (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
+        # row["method"] = "OLS"
+        # row["mse"] = mse
+        # row["pred"] = pred
+        # row["filename"] = "OLS" + params["fileparam"]
+        # row["params"] = params
+        # results.append(row)
 
-        # dataset.run_TSNN()
+        dataset.run_TSNN()
 
 
     res_path = os.path.join(os.getcwd(), "results", "results.json")

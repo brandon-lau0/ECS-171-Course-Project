@@ -70,12 +70,17 @@ class DataSet():
     def run_TSNN(self):
         # will change name when I figure out what it's called
         self._averaged_sites()
+        weeks_past = 4
         # dataset = read_csv('test.csv', header=None)
         fullcols = self.xcols + self.ycols
-        models = get_future_models(self.df.loc[:,fullcols], num_epochs=20, back_steps=2, future_steps=2)
-
-        input_data = np.array([[list(range(0,len(self.pred_input))), self.pred_input]])
-        input_data = input_data.reshape(1,2,len(self.pred_input))
+        print(fullcols)
+        x = np.array(self.df.loc[:,fullcols].tail(weeks_past))
+        input_data = np.expand_dims(x, axis=0)
+        # print(np.array([self.df.loc[:,fullcols].tail(weeks_past)]))
+        models = get_future_models(self.df.loc[:,fullcols], num_epochs=20, back_steps=weeks_past, future_steps=4)
+        # input_data = np.array([self.df.loc[:,fullcols].tail(weeks_past)])
+        # # input_data = np.array([[list(range(0,len(self.pred_input))), self.pred_input]])
+        input_data = input_data.reshape(1,weeks_past,len(input_data[0][0]))
         preds = get_predictions(input_data, models)
         print(preds)
 
