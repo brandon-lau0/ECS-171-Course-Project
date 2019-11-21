@@ -41,16 +41,16 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     #     data.at[index, 'Date'] = data.at[index, 'Date'].replace('-', '')
 
     # Setting up data for graphing
-    for index, row in y_test.iterrows():
-        y_test.at[index, 0] = float(y_test.at[index, 0])
     for index, row in y_train.iterrows():
-        y_test.at[index, 0] = float(y_test.at[index, 0])
+        y_train.at[index, 'SNWD.I-1 (in) '] = float(y_train.at[index, 'SNWD.I-1 (in) '])
+    for index, row in y_test.iterrows():
+        y_test.at[index, 'SNWD.I-1 (in) '] = float(y_test.at[index, 'SNWD.I-1 (in) '])
 
     whole_x = pd.concat([x_train, x_test], ignore_index=True)
     whole_y = pd.concat([y_train, y_test], ignore_index=True)
 
     for index, row in whole_y.iterrows():
-        whole_y.at[index, 0] = float(whole_y.at[index, 0])
+        whole_y.at[index, 'SNWD.I-1 (in) '] = float(whole_y.at[index, 'SNWD.I-1 (in) '])
 
     reg = LinearRegression().fit(x_train, y_train)
 
@@ -84,6 +84,8 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     print(data)
     print(data["Date"])
     print( data["SNWD.I-1 (in) "])
+    print(type(data["SNWD.I-1 (in) "]))
+    print(data["SNWD.I-1 (in) "].shape)
     plt.plot(data['Date'],  data["SNWD.I-1 (in) "]-y_pred_whole, color='green')
     plt.legend
     plt.title('Actual - Predicted')
@@ -92,4 +94,3 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     plt.savefig(os.path.join(os.getcwd(), "results", filename))
     # print(output_pred[0][0])
     return MSE,output_pred[0][0]
-
