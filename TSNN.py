@@ -74,7 +74,13 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
 
     model.add(Dense(len(train_y[0]), output_activation))
     model.compile(loss=loss_func, optimizer=opt, metrics=['accuracy'])
-    history = model.fit(train_x, train_y, epochs=num_epochs)
+	loss = []
+	error = []
+	for i in range(num_epochs):
+    	history = model.fit(train_x, train_y, epochs=1)
+		loss.append(history[0])
+		error.append(history[1])
+		model.reset_states()
     return model
 
 def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None,
