@@ -4,6 +4,8 @@ import TSNN
 from TSNN import *
 import OLS
 from OLS import *
+import ANN
+from ANN import *
 from sklearn.model_selection import train_test_split
 
 # used in format_date() and get_past_dates()
@@ -59,9 +61,10 @@ class DataSet():
     def run_ANN(self, params, filename):
         # retrieve loss and prediction
         # question: what are we actually predicting?
-
-        train(self.df, self.xcols, self.ycols, params)
-        return "TODO"
+        fpath = os.path.join(os.getcwd(), "results", filename)
+        print(self.pred_input)
+        (mse, pred) = train(self.df, self.xcols, self.ycols, params, fpath, self.pred_input)
+        return mse, pred
 
     def run_OLS(self, filename):
         # retrieve loss and prediction

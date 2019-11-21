@@ -47,7 +47,7 @@ def create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation
 
   return model
 
-def train(dataframe, XCols, YCol, params, filePathToSaveGraph):
+def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   '''
   Trains and model using provided data and outputs the accuracy graph.
 
@@ -71,8 +71,8 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph):
   model = create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation_func, optimizer, loss)
 
   history = model.fit(dataframe[XCols], dataframe[YCol], epochs=5, batch_size=1, validation_split=0.34)
-
-  result = model.predict(params)
+  print(pred_input)
+  result = model.predict(np.array([pred_input]))
 
   plt.plot(1 - np.array(history.history['accuracy']))
   plt.plot(1 - np.array(history.history['val_accuracy']))
@@ -81,5 +81,6 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph):
   plt.xlabel('epoch')
   plt.legend(['training', 'testing'], loc='upper right')
   plt.savefig(filePathToSaveGraph)
-
-  return 1 - np.array(history.history['accuracy']), result
+  print(list(1 - np.array(history.history['accuracy'])))
+  print(result[0])
+  return list(1 - np.array(history.history['accuracy'])), str(result[0])

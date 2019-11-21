@@ -1,1 +1,1 @@
-[]
+[{"optimizer": "sgd", "hiddenlayer": 1, "numneuron": 3, "loss": "mean_squared_error", "activation": "softmax"}]
