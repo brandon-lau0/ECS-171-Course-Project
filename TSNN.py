@@ -124,7 +124,12 @@ def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activ
             new_x_data.append(new_train_x)
         train_x = np.array(new_x_data)
 
-    return models
+        ret_models = [[],[]]
+        for model in models:
+            ret_models[0].append(model[0])
+            ret_models[1].append(model[1])
+
+    return ret_models
 
 def get_predictions(input_data, models):
     predictions = []
