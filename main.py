@@ -148,46 +148,46 @@ def main():
 
         print(dataset.impute_inputs("2019-12-01", params["timestep"]))
 
-        for ann_params in l_ann_params:
-            row = {}
-            moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
-            (mse, pred) = dataset.run_ANN(ann_params, "ANN" + moreinfo + params["fileparam"])
-            row["method"] = "ANN"
-            row["mse"] = mse
-            row["pred"] = pred
-            row["filename"] = "ANN" + params["fileparam"]
-            row["params"] = params
-            results.append(row.copy())
+        # for ann_params in l_ann_params:
+        #     row = {}
+        #     moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
+        #     (mse, pred) = dataset.run_ANN(ann_params, "ANN" + moreinfo + params["fileparam"])
+        #     row["method"] = "ANN"
+        #     row["mse"] = mse
+        #     row["pred"] = pred
+        #     row["filename"] = "ANN" + params["fileparam"]
+        #     row["params"] = params
+        #     results.append(row.copy())
 
-        # row = {}
-        # (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
-        # row["method"] = "OLS"
-        # row["mse"] = mse
-        # row["pred"] = pred
-        # row["filename"] = "OLS" + params["fileparam"]
-        # row["params"] = params
-        # results.append(row.copy())
-        # print(results)
+        row = {}
+        (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
+        row["method"] = "OLS"
+        row["mse"] = mse
+        row["pred"] = pred
+        row["filename"] = "OLS" + params["fileparam"]
+        row["params"] = params
+        results.append(row.copy())
+        print(results)
 
         # print(results)
-        for ann_params in l_ann_params:
-            row = {}
-            moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
-            (mse, predlist) = dataset.run_TSNN("TSNN" + moreinfo + params["fileparam"], ann_params)
-            row["method"] = "TSNN"
-            row["mse"] = mse
-            row["pred"] = predlist
-            row["filename"] = "TSNN" + params["fileparam"]
-            row["params"] = params
-            results.append(row.copy())
+        # for ann_params in l_ann_params:
+        #     row = {}
+        #     moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
+        #     (mse, predlist) = dataset.run_TSNN("TSNN" + moreinfo + params["fileparam"], ann_params)
+        #     row["method"] = "TSNN"
+        #     row["mse"] = mse
+        #     row["pred"] = predlist
+        #     row["filename"] = "TSNN" + params["fileparam"]
+        #     row["params"] = params
+        #     results.append(row.copy())
             # print(results)
 
         # with open(part_res_path, 'w') as f:
         #     json.dump(results, f)
 
 
-    with open(res_path, 'w') as fout:
-        json.dump(results, fout)
+    # with open(res_path, 'w') as fout:
+    #     json.dump(results, fout)
 
 
 if __name__ == "__main__":

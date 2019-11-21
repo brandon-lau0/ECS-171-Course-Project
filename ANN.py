@@ -66,9 +66,14 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   optimizer = params["optimizer"]
   loss = params["loss"]
   model = create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation_func, optimizer, loss)
-  history = model.fit(dataframe[XCols], dataframe[YCol], epochs=5, batch_size=1, validation_split=0.34)
+  # if params["hiddenlayer"] == 1:
+  #     history = model.fit(dataframe[XCols], dataframe[YCol], epochs=20, batch_size=1, validation_split=0.34)
+  # else:
+  history = model.fit(dataframe[XCols], dataframe[YCol], epochs=10, batch_size=1, validation_split=0.34)
+  print(history)
   print(pred_input)
   result = model.predict(np.array([pred_input]))
+  plt.figure()
   plt.plot(1 - np.array(history.history['accuracy']))
   plt.plot(1 - np.array(history.history['val_accuracy']))
   plt.title('Model Error for Training vs. Testing Data')
