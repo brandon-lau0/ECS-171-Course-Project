@@ -121,7 +121,7 @@ def main():
     # if always just snwd, don't need
     l_ycols = ["SNWD.I-1 (in) "]
 
-    res_path = os.path.join(os.getcwd(), "results", "results6.json")
+    res_path = os.path.join(os.getcwd(), "results", "results5.json")
 
     part_res_path = os.path.join(os.getcwd(), "results", "part-results.json")
     for params in l_params:
