@@ -71,24 +71,30 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
     model.add(Flatten())
     for i in range(0, hidden_layers-1):
         model.add(Dense(nodes_per_layer, activation=activation_func))
-    
+
     model.add(Dense(len(train_y[0]), output_activation))
     model.compile(loss=loss_func, optimizer=opt, metrics=['accuracy'])
-    history = model.fit(train_x, train_y, epochs=num_epochs)
+	loss = []
+	error = []
+	for i in range(num_epochs):
+    	history = model.fit(train_x, train_y, epochs=1)
+		loss.append(history[0])
+		error.append(history[1])
+		model.reset_states()
     return model
 
-def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None, 
+def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None,
                       loss_func="mean_squared_error", opt="SGD", num_epochs=1, back_steps=1, future_steps=1):
     trainVec = transform_3D(sequential_data, back_steps, future_steps)
     train_x = trainVec[0]
     train_y = trainVec[1]
-    
+
     if future_steps == 1:
         return get_model(train_x, train_y, nodes_per_layer, hidden_layers, activation_func, output_activation, loss_func, opt, num_epochs)
-    
+
     models = []
     model = None
-    
+
     for i in range(future_steps):
         print(train_x.shape)
         model = get_model(train_x, np.array(train_y[i]), nodes_per_layer, hidden_layers, activation_func, output_activation, loss_func, opt, num_epochs)
@@ -99,7 +105,7 @@ def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activ
             new_train_x = new_train_x.reshape(train_x[j].shape[0]+1, train_x[j].shape[1])
             new_x_data.append(new_train_x)
         train_x = np.array(new_x_data)
-    
+
     return models
 
 def get_predictions(input_data, models):
@@ -113,10 +119,5 @@ def get_predictions(input_data, models):
         new_input_data = np.append(input_data, pred)
         new_input_data = new_input_data.reshape(shape[0], shape[1]+1, shape[2])
         input_data = new_input_data
-        
+
     return predictions
-
-
-
-
-
