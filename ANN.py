@@ -47,7 +47,7 @@ def create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation
 
   return model
 
-def train(dataframe, XCols, YCol, params):
+def train(dataframe, XCols, YCol, params, filePathToSaveGraph):
   '''
   Trains and model using provided data and outputs the accuracy graph.
 
@@ -55,9 +55,11 @@ def train(dataframe, XCols, YCol, params):
   dataframe - dataframe containing the data read from CSV file
   XCols (list of strings) - contains the relevant feature names for the X values
   YCol (list of strings) - contains the feature name of the Y value you're predicting
+  params (dict) - contains the hyperparameters
+  filePathToSaveGraph (str) - file path of where to save the graph
 
   Returns:
-  None (displays a graph)
+  Tuple containing: (model error, predicted snow depth)
   '''
   input_dimension = len(XCols)
   num_hidden_layers = params["hiddenlayer"]
@@ -70,10 +72,14 @@ def train(dataframe, XCols, YCol, params):
 
   history = model.fit(dataframe[XCols], dataframe[YCol], epochs=5, batch_size=1, validation_split=0.34)
 
+  result = model.predict(params)
+
   plt.plot(1 - np.array(history.history['accuracy']))
   plt.plot(1 - np.array(history.history['val_accuracy']))
   plt.title('Model Error for Training vs. Testing Data')
   plt.ylabel('error')
   plt.xlabel('epoch')
   plt.legend(['training', 'testing'], loc='upper right')
-  plt.show()
+  plt.savefig(filePathToSaveGraph)
+
+  return 1 - np.array(history.history['accuracy']), result
