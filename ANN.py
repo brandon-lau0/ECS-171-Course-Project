@@ -74,16 +74,17 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   print(pred_input)
   result = model.predict(np.array([pred_input]))
   plt.figure()
-  plt.plot(1 - np.array(history.history['accuracy']))
-  plt.plot(1 - np.array(history.history['val_accuracy']))
+  plt.plot(np.array(history.history['mean_squared_error']))
+  plt.plot(np.array(history.history['val_mean_squared_error']))
   plt.title('Model Error for Training vs. Testing Data')
   plt.ylabel('error')
   plt.xlabel('epoch')
+  plt.xticks(np.arrange(0,10,step=1))
   plt.legend(['training', 'testing'], loc='upper right')
   plt.savefig(filePathToSaveGraph)
-  print(list(1 - np.array(history.history['accuracy'])))
+  print(list(np.array(history.history['mean_squared_error'])))
   print(result[0])
   error = []
-  for e in np.nditer(1 - np.array(history.history['accuracy'])):
+  for e in np.nditer(np.array(history.history['mean_squared_error'])):
     error.append(str(e))
   return error, str(result[0])
