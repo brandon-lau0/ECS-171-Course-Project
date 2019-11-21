@@ -23,56 +23,64 @@ for timestep in Timestep:
 l_rectradius = [0.25, 0.5, 0.75, 1]
 
 
-for timestep in l_timestep:
-    params = {}
-    params["timestep"] = timestep
-    params["rectradius"] = 0.25
-    params["remove_outliers"] = 1
-    params["scale_data"] = 1
-    params["use_pca"] = 1
-    params["fileparam"] =  f"{timestep}-0.25-1-1-1.png"
-    l_params.append(params)
+# for timestep in l_timestep:
+#     params = {}
+#     params["timestep"] = timestep
+#     params["rectradius"] = 0.25
+#     params["remove_outliers"] = 1
+#     params["scale_data"] = 1
+#     params["use_pca"] = 1
+#     params["fileparam"] =  f"{timestep}-0.25-1-1-1.png"
+#     l_params.append(params)
+#
+# for rectradius in l_rectradius:
+#     params = {}
+#     params["timestep"] = "weekly"
+#     params["rectradius"] = rectradius
+#     params["remove_outliers"] = 1
+#     params["scale_data"] = 1
+#     params["use_pca"] = 1
+#     params["fileparam"] =  f"weekly-{rectradius}-1-1-1.png"
+#     l_params.append(params)
+#
+# for i in range(0,2):
+#     params = {}
+#     params["timestep"] = "weekly"
+#     params["rectradius"] = 0.25
+#     params["remove_outliers"] = i
+#     params["scale_data"] = 1
+#     params["use_pca"] = 1
+#     params["fileparam"] =  f"weekly-0.25-{i}-1-1.png"
+#     l_params.append(params)
+#
+# for i in range(0,2):
+#     params = {}
+#     params["timestep"] = "weekly"
+#     params["rectradius"] = 0.25
+#     params["remove_outliers"] = 1
+#     params["scale_data"] = i
+#     params["use_pca"] = 1
+#     params["fileparam"] =  f"weekly-0.25-1-{i}-1.png"
+#     l_params.append(params)
+#
+# for i in range(0,2):
+#     params = {}
+#     params["timestep"] = "weekly"
+#     params["rectradius"] = 0.25
+#     params["remove_outliers"] = 1
+#     params["scale_data"] = 1
+#     params["use_pca"] = i
+#     params["fileparam"] =  f"weekly-0.25-1-1-{i}.png"
+#     l_params.append(params)
 
-for rectradius in l_rectradius:
-    params = {}
-    params["timestep"] = "weekly"
-    params["rectradius"] = rectradius
-    params["remove_outliers"] = 1
-    params["scale_data"] = 1
-    params["use_pca"] = 1
-    params["fileparam"] =  f"weekly-{rectradius}-1-1-1.png"
-    l_params.append(params)
-
-for i in range(0,2):
-    params = {}
-    params["timestep"] = "weekly"
-    params["rectradius"] = 0.25
-    params["remove_outliers"] = i
-    params["scale_data"] = 1
-    params["use_pca"] = 1
-    params["fileparam"] =  f"weekly-0.25-{i}-1-1.png"
-    l_params.append(params)
-
-for i in range(0,2):
-    params = {}
-    params["timestep"] = "weekly"
-    params["rectradius"] = 0.25
-    params["remove_outliers"] = 1
-    params["scale_data"] = i
-    params["use_pca"] = 1
-    params["fileparam"] =  f"weekly-0.25-1-{i}-1.png"
-    l_params.append(params)
-
-for i in range(0,2):
-    params = {}
-    params["timestep"] = "weekly"
-    params["rectradius"] = 0.25
-    params["remove_outliers"] = 1
-    params["scale_data"] = 1
-    params["use_pca"] = i
-    params["fileparam"] =  f"weekly-0.25-1-1-{i}.png"
-    l_params.append(params)
-
+params = {}
+params["timestep"] = "weekly"
+params["rectradius"] = 0.25
+params["remove_outliers"] = 1
+params["scale_data"] = 1
+params["use_pca"] = 1
+params["fileparam"] =  f"weekly-0.25-1-1-1.png"
+l_params.append(params)
 
 
 

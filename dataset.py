@@ -72,7 +72,7 @@ class DataSet():
         self.set_split(0.3)
         return run_OLS_predictor(self.get_data_with_date(), self.get_Xtrain(), self.get_Ytrain(), self.get_Xtest(), self.get_Ytest(), self.pred_input, filename)
 
-    def run_TSNN(self, filename):
+    def run_TSNN(self, filename, params):
         # will change name when I figure out what it's called
         self._averaged_sites()
         weeks_past = 4
@@ -81,8 +81,11 @@ class DataSet():
         # print(fullcols)
         x = np.array(self.df.loc[:,fullcols].tail(weeks_past))
         input_data = np.expand_dims(x, axis=0)
+        fpath = os.path.join(os.getcwd(), "results", filename)
         # print(np.array([self.df.loc[:,fullcols].tail(weeks_past)]))
-        models = get_future_models(self.df.loc[:,fullcols], num_epochs=20, back_steps=weeks_past, future_steps=4)
+        models = get_future_models(self.df.loc[:,fullcols], nodes_per_layer=params["numneuron"],
+                hidden_layers=params["hiddenlayer"], activation_func=params["activation"],
+                loss_func =params["loss"], opt=params["optimizer"],num_epochs=20, back_steps=weeks_past, future_steps=4, graph_path=fpath)
         error = models[1]
         # input_data = np.array([self.df.loc[:,fullcols].tail(weeks_past)])
         # # input_data = np.array([[list(range(0,len(self.pred_input))), self.pred_input]])

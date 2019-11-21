@@ -96,7 +96,7 @@ def main():
     param_file = sys.argv[1]
     ann_param_file = sys.argv[2]
 
-    param_builder()
+    # param_builder()
 
     l_params = []
     with open(param_file, 'r') as fin:
@@ -121,7 +121,7 @@ def main():
     # if always just snwd, don't need
     l_ycols = ["SNWD.I-1 (in) "]
 
-    res_path = os.path.join(os.getcwd(), "results", "results1.json")
+    res_path = os.path.join(os.getcwd(), "results", "results2.json")
 
     part_res_path = os.path.join(os.getcwd(), "results", "part-results.json")
     for params in l_params:
@@ -159,27 +159,28 @@ def main():
         #     row["params"] = params
         #     results.append(row.copy())
 
-        row = {}
-        (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
-        row["method"] = "OLS"
-        row["mse"] = mse
-        row["pred"] = pred
-        row["filename"] = "OLS" + params["fileparam"]
-        row["params"] = params
-        results.append(row.copy())
-        print(results)
+        # row = {}
+        # (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
+        # row["method"] = "OLS"
+        # row["mse"] = mse
+        # row["pred"] = pred
+        # row["filename"] = "OLS" + params["fileparam"]
+        # row["params"] = params
+        # results.append(row.copy())
+        # print(results)
 
         # print(results)
-        # if params["timestep"] == "weekly":
-        #     row = {}
-        #     (mse, predlist) = dataset.run_TSNN("TSNN" + params["fileparam"])
-        #     row["method"] = "TSNN"
-        #     row["mse"] = mse
-        #     row["pred"] = predlist
-        #     row["filename"] = "TSNN" + params["fileparam"]
-        #     row["params"] = params
-        #     results.append(row.copy())
-        #     print(results)
+        for ann_params in l_ann_params:
+            row = {}
+            moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
+            (mse, predlist) = dataset.run_TSNN("TSNN" + moreinfo + params["fileparam"], ann_params)
+            row["method"] = "TSNN"
+            row["mse"] = mse
+            row["pred"] = predlist
+            row["filename"] = "TSNN" + params["fileparam"]
+            row["params"] = params
+            results.append(row.copy())
+            print(results)
 
         # with open(part_res_path, 'w') as f:
         #     json.dump(results, f)

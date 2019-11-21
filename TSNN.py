@@ -97,7 +97,7 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
     axs[1].plot(x_vals, history[1])
     axs[1].set_title('Error')
     axs[1].set(ylabel="Error (1-Accuracy)",xlabel="Epoch")
-    fig.savefig('tsnn-result-graph.png')
+    fig.savefig(graph_path)
 
     error = []
 
@@ -107,20 +107,20 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
     return (model, error)
 
 def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None,
-                      loss_func="mean_squared_error", opt="SGD", num_epochs=1, back_steps=1, future_steps=1):
+                      loss_func="mean_squared_error", opt="SGD", num_epochs=1, back_steps=1, future_steps=1, graph_path="oops.png"):
     trainVec = transform_3D(sequential_data, back_steps, future_steps)
     train_x = trainVec[0]
     train_y = trainVec[1]
 
     if future_steps == 1:
-        return get_model(train_x, train_y, nodes_per_layer, hidden_layers, activation_func, output_activation, loss_func, opt, num_epochs)
+        return get_model(train_x, train_y, nodes_per_layer, hidden_layers, activation_func, output_activation, loss_func, opt, num_epochs, graph_path)
 
     models = []
     model = None
 
     for i in range(future_steps):
         print(train_x.shape)
-        model = get_model(train_x, np.array(train_y[i]), nodes_per_layer, hidden_layers, activation_func, output_activation, loss_func, opt, num_epochs)
+        model = get_model(train_x, np.array(train_y[i]), nodes_per_layer, hidden_layers, activation_func, output_activation, loss_func, opt, num_epochs, graph_path)
         models.append(model)
         new_x_data = []
         for j in range(train_x.shape[0]):
