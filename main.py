@@ -148,6 +148,19 @@ def main():
 
         print(dataset.impute_inputs("2019-12-01", params["timestep"]))
 
+        print(results)
+        for ann_params in l_ann_params:
+            row = {}
+            moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
+            (mse, predlist) = dataset.run_TSNN("TSNN" + moreinfo + params["fileparam"], ann_params)
+            row["method"] = "TSNN"
+            row["mse"] = mse
+            row["pred"] = predlist
+            row["filename"] = "TSNN" + params["fileparam"]
+            row["params"] = params
+            results.append(row.copy())
+            print(results)
+
         for ann_params in l_ann_params:
             row = {}
             moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
@@ -169,18 +182,7 @@ def main():
         # results.append(row.copy())
         # print(results)
 
-        # print(results)
-        # for ann_params in l_ann_params:
-        #     row = {}
-        #     moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
-        #     (mse, predlist) = dataset.run_TSNN("TSNN" + moreinfo + params["fileparam"], ann_params)
-        #     row["method"] = "TSNN"
-        #     row["mse"] = mse
-        #     row["pred"] = predlist
-        #     row["filename"] = "TSNN" + params["fileparam"]
-        #     row["params"] = params
-        #     results.append(row.copy())
-            # print(results)
+
 
         # with open(part_res_path, 'w') as f:
         #     json.dump(results, f)

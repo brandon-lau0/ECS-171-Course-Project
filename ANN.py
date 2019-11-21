@@ -43,7 +43,7 @@ def create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation
   # sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
   # model.compile(optimizer=sgd, loss=loss, metrics=[metric])
 
-  model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
+  model.compile(optimizer=optimizer, loss=loss, metrics=['mean_squared_error'])
 
   return model
 
@@ -81,7 +81,7 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   plt.title('Model Error for Training vs. Testing Data')
   plt.ylabel('error')
   plt.xlabel('epoch')
-  plt.xticks(np.arrange(0,10,step=1))
+  plt.xticks(np.arange(0,10,step=1))
   plt.legend(['training', 'testing'], loc='upper right')
   plt.savefig(filePathToSaveGraph)
   print(list(np.array(history.history['mean_squared_error'])))
@@ -90,4 +90,3 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   for e in np.nditer(np.array(history.history['mean_squared_error'])):
     error.append(str(e))
   return error, str(result[0])
-
