@@ -41,8 +41,16 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     # 	data.at[index, 'Date'] = data.at[index, 'Date'].replace('-', '')
 
     # Setting up data for graphing
+    for index, row in y_test.iterrows():
+        y_test.at[index, 0] = float(y_test.at[index, 0])
+    for index, row in y_train.iterrows():
+        y_test.at[index, 0] = float(y_test.at[index, 0])
+
     whole_x = pd.concat([x_train, x_test], ignore_index=True)
     whole_y = pd.concat([y_train, y_test], ignore_index=True)
+
+    for index, row in whole_y.iterrows():
+        whole_y.at[index, 0] = float(whole_y.at[index, 0])
 
     reg = LinearRegression().fit(x_train, y_train)
 
@@ -55,10 +63,8 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     output_pred = reg.predict(np.asarray(pred_input).reshape(1, -1))
     print(output_pred)
 
-
     # fpr_keras, tpr_keras, thresholds_keras = roc_curve(y_test, y_pred)
     # auc_keras = auc(fpr_keras, tpr_keras)
-
 
     MSE = mean_squared_error(y_test, y_pred)
     MSE_whole = mean_squared_error(whole_y, y_pred_whole)
@@ -86,3 +92,4 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     plt.savefig(os.path.join(os.getcwd(), "results", filename))
     # print(output_pred[0][0])
     return MSE,output_pred[0][0]
+
