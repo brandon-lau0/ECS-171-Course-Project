@@ -156,7 +156,7 @@ def main():
         results.append(row.copy())
 
         print(results)
-        #
+
         # row = {}
         # (mse, predlist) = dataset.run_TSNN("TSNN" + params["fileparam"])
         # row["method"] = "TSNN"
@@ -165,11 +165,11 @@ def main():
         # row["filename"] = "TSNN" + params["fileparam"]
         # row["params"] = params
         # results.append(row.copy())
+        # print(results)
 
-
-    # res_path = os.path.join(os.getcwd(), "results", "results.json")
-    # with open(res_path, 'w') as fout:
-    #     json.dump(results, fout)
+    res_path = os.path.join(os.getcwd(), "results", "results.json")
+    with open(res_path, 'w') as fout:
+        json.dump(results, fout)
 
 
 if __name__ == "__main__":

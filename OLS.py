@@ -26,7 +26,7 @@ from sklearn.metrics import auc
 def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filename):
 
     # data = data.drop(0, axis=0)
-    print(data)
+	print(data)
 
     # We might want to observe the snow depth pattern throughout the year,
     #    In other word, we want a plot that have 'Date' on x-axis and snow-depth
@@ -41,39 +41,36 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     #     data.at[index, 'Date'] = data.at[index, 'Date'].replace('-', '')
 
     # Setting up data for graphing
-    for index, row in y_train.iterrows():
-        y_train.at[index, 'SNWD.I-1 (in) '] = float(y_train.at[index, 'SNWD.I-1 (in) '])
-    for index, row in y_test.iterrows():
-        y_test.at[index, 'SNWD.I-1 (in) '] = float(y_test.at[index, 'SNWD.I-1 (in) '])
+	for index, row in y_train.iterrows():
+		y_train.at[index, 'SNWD.I-1 (in) '] = float(y_train.at[index, 'SNWD.I-1 (in) '])
+	for index, row in y_test.iterrows():
+		y_test.at[index, 'SNWD.I-1 (in) '] = float(y_test.at[index, 'SNWD.I-1 (in) '])
 
-    whole_x = pd.concat([x_train, x_test], ignore_index=True)
-    whole_y = pd.concat([y_train, y_test], ignore_index=True)
+	whole_x = pd.concat([x_train, x_test], ignore_index=True)
+	whole_y = pd.concat([y_train, y_test], ignore_index=True)
 
-    for index, row in whole_y.iterrows():
-        whole_y.at[index, 'SNWD.I-1 (in) '] = float(whole_y.at[index, 'SNWD.I-1 (in) '])
+	for index, row in whole_y.iterrows():
+		whole_y.at[index, 'SNWD.I-1 (in) '] = float(whole_y.at[index, 'SNWD.I-1 (in) '])
 
-    reg = LinearRegression().fit(x_train, y_train)
+	reg = LinearRegression().fit(x_train, y_train)
 
     # Get prediction based on linear model above
     #    Note that the features uses for this linear models are PCA, which cannot
     #        be used for graphing
-    y_pred = reg.predict(x_test)
-    y_pred_whole = reg.predict(whole_x)
+	y_pred = reg.predict(x_test)
+	y_pred_whole = reg.predict(whole_x)
 
-    output_pred = reg.predict(np.asarray(pred_input).reshape(1, -1))
-    print(output_pred)
+	output_pred = reg.predict(np.asarray(pred_input).reshape(1, -1))
+	print(output_pred)
 
     # fpr_keras, tpr_keras, thresholds_keras = roc_curve(y_test, y_pred)
     # auc_keras = auc(fpr_keras, tpr_keras)
 
-    MSE = mean_squared_error(y_test, y_pred)
-    MSE_whole = mean_squared_error(whole_y, y_pred_whole)
+	MSE = mean_squared_error(y_test, y_pred)
+	MSE_whole = mean_squared_error(whole_y, y_pred_whole)
 
-    # Resulted MSE = 36.84 & MSE_whole = 30.26
-    #    This means prediction using regression model have ~65 accuracy!
-    #        (Accuracy defined as 1-MSE)
-    # print(MSE)
-    # print(MSE_whole)
+	print(MSE)
+	print(MSE_whole)
 
     # Here is the "simple" plot that takes ~30 seconds to plot
     #    The blue lines represents actual snow depth, while red lines represents
@@ -81,16 +78,16 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     #    If you lack patients, please read the attacted screenshot
     # plt.plot(data['Date'], data["SNWD.I-1 (in) "] ,color='blue')
     # plt.plot(data['Date'], y_pred_whole, color='red')
-    print(data)
-    print(data["Date"])
-    print( data["SNWD.I-1 (in) "])
-    print(type(data["SNWD.I-1 (in) "]))
-    print(data["SNWD.I-1 (in) "].shape)
-    plt.plot(data['Date'],  data["SNWD.I-1 (in) "]-y_pred_whole, color='green')
-    plt.legend
-    plt.title('Actual - Predicted')
-    plt.ylabel('Inches')
-    plt.xlabel('Date')
-    plt.savefig(os.path.join(os.getcwd(), "results", filename))
+    	
+	y_actual = np.array(data["SNWD.I-1 (in) "])
+	print(data)
+	print(data["Date"])
+	print(data["SNWD.I-1 (in) "])
+	plt.plot(data['Date'],  y_actual-y_pred_whole, color='green')
+	plt.legend
+	plt.title('Actual - Predicted')
+	plt.ylabel('Inches')
+	plt.xlabel('Date')
+	plt.savefig(os.path.join(os.getcwd(), "results", filename))
     # print(output_pred[0][0])
-    return MSE,output_pred[0][0]
+	return MSE,output_pred[0][0]

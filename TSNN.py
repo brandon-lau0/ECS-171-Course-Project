@@ -84,7 +84,7 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
     history = [[],[]]
     for hist in history_list:
         history[0] += hist.history["loss"]
-        history[1] += hist.history["acc"]
+        history[1] += hist.history["accuracy"]
 
     for i in range(len(history[1])):
         history[1][i] = 1 - history[1][i]
