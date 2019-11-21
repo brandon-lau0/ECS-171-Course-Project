@@ -50,10 +50,12 @@ def create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation
 def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   '''
   Trains and model using provided data and outputs the accuracy graph.
+
   Parameters:
   dataframe - dataframe containing the data read from CSV file
   XCols (list of strings) - contains the relevant feature names for the X values
   YCol (list of strings) - contains the feature name of the Y value you're predicting
+
   params (dict) - contains the hyperparameters
   filePathToSaveGraph (str) - file path of where to save the graph
   Returns:
@@ -88,3 +90,4 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   for e in np.nditer(np.array(history.history['mean_squared_error'])):
     error.append(str(e))
   return error, str(result[0])
+

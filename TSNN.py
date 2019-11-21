@@ -74,34 +74,39 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
         model.add(Dense(nodes_per_layer, activation=activation_func))
 
     model.add(Dense(len(train_y[0]), output_activation))
-    model.compile(loss=loss_func, optimizer=opt, metrics=['accuracy'])
+    model.compile(loss=loss_func, optimizer=opt, metrics=['mean_squared_error'])
     history_list = []
     for i in range(num_epochs):
-        history_list.append(model.fit(train_x, train_y, epochs=1))
+        history_list.append(model.fit(train_x, train_y, epochs=1,
+        validation_split=0.33))
         model.reset_states()
 
     x_vals = list(range(num_epochs))
-    history = [[],[]]
+    history = [[],[],[],[]]
     for hist in history_list:
         history[0] += hist.history["loss"]
-        history[1] += hist.history["accuracy"]
+        history[1] += hist.history["mean_squared_error"]
+        history[2] += hist.history["val_loss"]
+        history[3] += hist.history["val_mean_squared_error"]
 
-    for i in range(len(history[1])):
-        history[1][i] = 1 - history[1][i]
-
-    fig, axs = plt.subplots(2)
+    fig, axs = plt.subplots(1)
     fig.set_size_inches(10, 10)
-    axs[0].plot(x_vals, history[0])
-    axs[0].set_title('Loss')
+    axs[0].plot(x_vals, history[0], label="Training")
+    axs[0].plot(x_vals, history[2], label="Testing")
+    axs[0].set_title('Error')
+    axs[0].legend()
     axs[0].set(ylabel="Mean Squared Error",xlabel="Epoch")
-    axs[1].plot(x_vals, history[1])
-    axs[1].set_title('Error')
-    axs[1].set(ylabel="Error (1-Accuracy)",xlabel="Epoch")
+    axs[0].xticks(np.arange(0,num_epochs, step=1))
+#    axs[1].plot(x_vals, history[1], label="Training")
+#    axs[1].plot(x_vals, history[3], label="Testing")
+#    axs[1].set_title('Error')
+#    axs[1].legend()
+#    axs[1].set(ylabel="Error (1-Accuracy)",xlabel="Epoch")
     fig.savefig(graph_path)
 
     error = []
 
-    for e in np.nditer(1 - history[1][len(history[1])-1]):
+    for e in np.nditer(1 - history[3][len(history[1])-1]):
         error.append(str(e))
 
     return (model, error)
