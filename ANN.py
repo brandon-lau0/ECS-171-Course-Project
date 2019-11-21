@@ -83,4 +83,10 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   plt.savefig(filePathToSaveGraph)
   print(list(1 - np.array(history.history['accuracy'])))
   print(result[0])
-  return list(1 - np.array(history.history['accuracy'])), str(result[0])
+
+  error = []
+  for e in np.nditer(1 - np.array(history.history['accuracy'])):
+    error.append(str(e))
+
+  return error, str(result[0])
+
