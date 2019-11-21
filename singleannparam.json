@@ -1,0 +1,1 @@
+[{"optimizer": "rmsprop", "hiddenlayer": 1, "numneuron": 6, "loss": "mean_squared_error", "activation": "softmax"}]

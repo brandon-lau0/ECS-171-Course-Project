@@ -47,7 +47,7 @@ def create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation
 
   return model
 
-def train(dataframe, XCols, YCol):
+def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   '''
   Trains and model using provided data and outputs the accuracy graph.
 
@@ -56,25 +56,37 @@ def train(dataframe, XCols, YCol):
   XCols (list of strings) - contains the relevant feature names for the X values
   YCol (list of strings) - contains the feature name of the Y value you're predicting
 
+  params (dict) - contains the hyperparameters
+  filePathToSaveGraph (str) - file path of where to save the graph
   Returns:
-  None (displays a graph)
+  Tuple containing: (model error, predicted snow depth)
   '''
   input_dimension = len(XCols)
-  num_hidden_layers = 2
-  num_neurons = 3
-  activation_func = 'relu'
-  optimizer = 'sgd'
-  loss = 'mean_squared_error'
-
+  num_hidden_layers = params["hiddenlayer"]
+  num_neurons = params["numneuron"]
+  activation_func = params["activation"]
+  optimizer = params["optimizer"]
+  loss = params["loss"]
   model = create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation_func, optimizer, loss)
-
-  history = model.fit(dataframe[XCols], dataframe[YCol], epochs=5, batch_size=1, validation_split=0.34)
-
+  # if params["hiddenlayer"] == 1:
+  #     history = model.fit(dataframe[XCols], dataframe[YCol], epochs=20, batch_size=1, validation_split=0.34)
+  # else:
+  history = model.fit(dataframe[XCols], dataframe[YCol], epochs=10, batch_size=1, validation_split=0.34)
+  print(history)
+  print(pred_input)
+  result = model.predict(np.array([pred_input]))
+  plt.figure()
   plt.plot(1 - np.array(history.history['accuracy']))
   plt.plot(1 - np.array(history.history['val_accuracy']))
   plt.title('Model Error for Training vs. Testing Data')
   plt.ylabel('error')
   plt.xlabel('epoch')
   plt.legend(['training', 'testing'], loc='upper right')
-  plt.show()
-  
+  plt.savefig(filePathToSaveGraph)
+  print(list(1 - np.array(history.history['accuracy'])))
+  print(result[0])
+  error = []
+  for e in np.nditer(1 - np.array(history.history['accuracy'])):
+    error.append(str(e))
+  return error, str(result[0])
+
