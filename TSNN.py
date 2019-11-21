@@ -99,7 +99,12 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
     axs[1].set(ylabel="Error (1-Accuracy)",xlabel="Epoch")
     fig.savefig('tsnn-result-graph.png')
 
-    return (model, 1 - history[1][len(history[1])-1])
+    error = []
+
+    for e in np.nditer(1 - history[1][len(history[1])-1]):
+        error.append(str(e))
+
+    return (model, error)
 
 def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None,
                       loss_func="mean_squared_error", opt="SGD", num_epochs=1, back_steps=1, future_steps=1):
@@ -146,6 +151,6 @@ def get_predictions(input_data, models):
     important_preds = []
     n = len(predictions)
     for pred in predictions:
-        important_preds = predictions[n-1]
+        important_preds.append(str(pred[0][n-1]))
 
     return important_preds
