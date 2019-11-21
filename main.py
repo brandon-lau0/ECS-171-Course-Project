@@ -113,7 +113,11 @@ def main():
     # if always just snwd, don't need
     l_ycols = ["SNWD.I-1 (in) "]
 
+    res_path = os.path.join(os.getcwd(), "results", "results.json")
+
+    part_res_path = os.path.join(os.getcwd(), "results", "part-results.json")
     for params in l_params:
+        # uniq = f"{params["timestep"]}-{params["rectradius"]}-{params["remove_outliers"]}-{params["scale_data"]}-{params["use_pca"]}-"
         xcols = l_xcols.copy()
 
         databuilder = DataSet_Builder()
@@ -136,38 +140,42 @@ def main():
 
         print(dataset.impute_inputs("2019-12-01", params["timestep"]))
 
-        # for ann_params in l_ann_params:
-        #     row = {}
-        #     (mse, pred) = dataset.run_ANN(ann_params, "ANN" + params["fileparam"])
-        #     row["method"] = "ANN"
-        #     row["mse"] = mse
-        #     row["pred"] = pred
-        #     row["filename"] = "ANN" + params["fileparam"]
-        #     row["params"] = params
-        #     results.append(row.copy())
-
-        row = {}
-        (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
-        row["method"] = "OLS"
-        row["mse"] = mse
-        row["pred"] = pred
-        row["filename"] = "OLS" + params["fileparam"]
-        row["params"] = params
-        results.append(row.copy())
-
-        print(results)
+        for ann_params in l_ann_params:
+            row = {}
+            moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
+            (mse, pred) = dataset.run_ANN(ann_params, "ANN" + moreinfo + params["fileparam"])
+            row["method"] = "ANN"
+            row["mse"] = mse
+            row["pred"] = pred
+            row["filename"] = "ANN" + params["fileparam"]
+            row["params"] = params
+            results.append(row.copy())
 
         # row = {}
-        # (mse, predlist) = dataset.run_TSNN("TSNN" + params["fileparam"])
-        # row["method"] = "TSNN"
+        # (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
+        # row["method"] = "OLS"
         # row["mse"] = mse
-        # row["pred"] = predlist
-        # row["filename"] = "TSNN" + params["fileparam"]
+        # row["pred"] = pred
+        # row["filename"] = "OLS" + params["fileparam"]
         # row["params"] = params
         # results.append(row.copy())
+        #
         # print(results)
+        # if params["timestep"] == "weekly":
+            # row = {}
+            # (mse, predlist) = dataset.run_TSNN("TSNN" + params["fileparam"])
+            # row["method"] = "TSNN"
+            # row["mse"] = mse
+            # row["pred"] = predlist
+            # row["filename"] = "TSNN" + params["fileparam"]
+            # row["params"] = params
+            # results.append(row.copy())
+            # print(results)
 
-    res_path = os.path.join(os.getcwd(), "results", "results.json")
+        with open(part_res_path, 'w') as f:
+            json.dump(results, f)
+
+
     with open(res_path, 'w') as fout:
         json.dump(results, fout)
 
