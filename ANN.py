@@ -47,7 +47,7 @@ def create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation
 
   return model
 
-def train(dataframe, XCols, YCol):
+def train(dataframe, XCols, YCol, params):
   '''
   Trains and model using provided data and outputs the accuracy graph.
 
@@ -60,11 +60,11 @@ def train(dataframe, XCols, YCol):
   None (displays a graph)
   '''
   input_dimension = len(XCols)
-  num_hidden_layers = 2
-  num_neurons = 3
-  activation_func = 'relu'
-  optimizer = 'sgd'
-  loss = 'mean_squared_error'
+  num_hidden_layers = params["hiddenlayer"]
+  num_neurons = params["numneuron"]
+  activation_func = params["activation"]
+  optimizer = params["optimizer"]
+  loss = params["loss"]
 
   model = create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation_func, optimizer, loss)
 
@@ -77,4 +77,3 @@ def train(dataframe, XCols, YCol):
   plt.xlabel('epoch')
   plt.legend(['training', 'testing'], loc='upper right')
   plt.show()
-  

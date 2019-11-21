@@ -59,6 +59,8 @@ class DataSet():
     def run_ANN(self, params):
         # retrieve loss and prediction
         # question: what are we actually predicting?
+
+        train(self.df, self.xcols, self.ycols, params)
         return "TODO"
 
     def run_OLS(self, filename):
