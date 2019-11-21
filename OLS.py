@@ -40,20 +40,11 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
 	MSE = mean_squared_error(y_test, y_pred)
 
 	print(MSE)
-	print(MSE_whole)
-
-    # Here is the "simple" plot that takes ~30 seconds to plot
-    #    The blue lines represents actual snow depth, while red lines represents
-    #        predictions
-    #    If you lack patients, please read the attacted screenshot
-    # plt.plot(data['Date'], data["SNWD.I-1 (in) "] ,color='blue')
-    # plt.plot(data['Date'], y_pred_whole, color='red')
 
 	y_actual = np.array(data["SNWD.I-1 (in) "])
-	print(data)
-	print(data["Date"])
-	print(data["SNWD.I-1 (in) "])
-	plt.scatter(data['Date'],  y_actual-y_pred_whole, color='green')
+	y_pred_whole = y_pred_whole.flatten()
+	date = data['Date']
+	plt.scatter(date, y_actual-y_pred_whole, color='green')
 	plt.legend
 	plt.title('Actual - Predicted')
 	plt.ylabel('Inches')
