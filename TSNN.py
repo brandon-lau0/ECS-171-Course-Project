@@ -99,7 +99,12 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
     axs[1].set(ylabel="Error (1-Accuracy)",xlabel="Epoch")
     fig.savefig('tsnn-result-graph.png')
 
-    return (model, 1 - history[1][len(history[1])-1])
+    error = []
+
+    for e in np.nditer(1 - history[1][len(history[1])-1]):
+        error.append(str(e))
+
+    return (model, error)
 
 def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None,
                       loss_func="mean_squared_error", opt="SGD", num_epochs=1, back_steps=1, future_steps=1):
