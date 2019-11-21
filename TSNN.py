@@ -1,7 +1,7 @@
 
 import numpy as np
 from numpy import concatenate
-from matplotlib import pyplot
+from matplotlib import pyplot as plt
 from pandas import read_csv
 from pandas import DataFrame
 from pandas import concat
@@ -13,9 +13,10 @@ from tensorflow.keras.layers import Flatten
 # EXAMPLE OF HOW TO USE THIS CODE
 # dataset = read_csv('test.csv', header=None)
 # models = get_future_models(dataset, num_epochs=20, back_steps=2, future_steps=2)
+# error = models[1]
 # input_data = np.array([[[0,1,2,3,4,5], [1,2,3,4,5,6]]])
 # input_data = input_data.reshape(1,2,6)
-# preds = get_predictions(input_data, models)
+# preds = get_predictions(input_data, models[0])
 # print(preds)
 
 # convert series to supervised learning
@@ -65,7 +66,7 @@ def transform_3D(dataset, look_back, pred_forward):
     return (x_data, y_data)
 
 
-def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None, loss_func="mean_squared_error", opt="SGD", num_epochs=1):
+def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None, loss_func="mean_squared_error", opt="SGD", num_epochs=1, graph_path="metric_graph.jpg"):
     model = Sequential()
     model.add(LSTM(nodes_per_layer, activation=activation_func, input_shape=(train_x.shape[1], train_x.shape[2])))
     model.add(Flatten())
@@ -74,14 +75,31 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
 
     model.add(Dense(len(train_y[0]), output_activation))
     model.compile(loss=loss_func, optimizer=opt, metrics=['accuracy'])
-    # loss = []
-    # error = []
+    history_list = []
     for i in range(num_epochs):
-        history = model.fit(train_x, train_y, epochs=1)
-        # loss.append(history.history[0])
-        # error.append(history.history[1])
+        history_list.append(model.fit(train_x, train_y, epochs=1))
         model.reset_states()
-    return model
+
+    x_vals = list(range(num_epochs))
+    history = [[],[]]
+    for hist in history_list:
+        history[0] += hist.history["loss"]
+        history[1] += hist.history["acc"]
+
+    for i in range(len(history[1])):
+        history[1][i] = 1 - history[1][i]
+
+    fig, axs = plt.subplots(2)
+    fig.set_size_inches(10, 10)
+    axs[0].plot(x_vals, history[0])
+    axs[0].set_title('Loss')
+    axs[0].set(ylabel="Mean Squared Error",xlabel="Epoch")
+    axs[1].plot(x_vals, history[1])
+    axs[1].set_title('Error')
+    axs[1].set(ylabel="Error (1-Accuracy)",xlabel="Epoch")
+    fig.savefig('tsnn-result-graph.png')
+
+    return (model, 1 - history[1][len(history[1])-1])
 
 def get_future_models(sequential_data, nodes_per_layer=5, hidden_layers=1, activation_func="relu", output_activation=None,
                       loss_func="mean_squared_error", opt="SGD", num_epochs=1, back_steps=1, future_steps=1):
@@ -120,4 +138,9 @@ def get_predictions(input_data, models):
         new_input_data = new_input_data.reshape(shape[0], shape[1]+1, shape[2])
         input_data = new_input_data
 
-    return predictions
+    important_preds = []
+    n = len(predictions)
+    for pred in predictions:
+        important_preds = predictions[n-1]
+
+    return important_preds
