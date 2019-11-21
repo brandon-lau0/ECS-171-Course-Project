@@ -8,20 +8,20 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
 
-# #	Data = [x_train, y_train, x_test, y_test]
+# #    Data = [x_train, y_train, x_test, y_test]
 # def get_OLS_error (x_train, y_train, x_test, y_test):
 #
-# 	# (x_train,y_train) in fit()
-# 	reg = LinearRegression().fit(x_train, y_train)
+#     # (x_train,y_train) in fit()
+#     reg = LinearRegression().fit(x_train, y_train)
 #
-# 	# Get prediction based on linear model above
-# 	y_pred = reg.predict(x_test)
+#     # Get prediction based on linear model above
+#     y_pred = reg.predict(x_test)
 #
-# 	# Get error of the prediction in comparsion to actual data from testing set
-# 	#	We define error = mean_squared_error
-# 	#		  accuracy = 1 - mean_squared_error
-# 	MSE = mean_squared_error(y_test, y_pred)
-# 	return(MSE)
+#     # Get error of the prediction in comparsion to actual data from testing set
+#     #    We define error = mean_squared_error
+#     #          accuracy = 1 - mean_squared_error
+#     MSE = mean_squared_error(y_test, y_pred)
+#     return(MSE)
 
 def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filename):
 
@@ -29,16 +29,16 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     print(data)
 
     # We might want to observe the snow depth pattern throughout the year,
-    #	In other word, we want a plot that have 'Date' on x-axis and snow-depth
-    #		on y-axis
-    #	In addition, we want to plot prediction and actual data of snow-depth
-    #		both on the same graph for comparsion
+    #    In other word, we want a plot that have 'Date' on x-axis and snow-depth
+    #        on y-axis
+    #    In addition, we want to plot prediction and actual data of snow-depth
+    #        both on the same graph for comparsion
 
     # In order for matplot to handle graphing Date, need to remove '/'s in 'Date'
-    #	This might not be necessary, since, if matplot cannot interpret a data as
-    #		number, it will just try to plot data in order of array indices
+    #    This might not be necessary, since, if matplot cannot interpret a data as
+    #        number, it will just try to plot data in order of array indices
     # for index, row in data.iterrows():
-    # 	data.at[index, 'Date'] = data.at[index, 'Date'].replace('-', '')
+    #     data.at[index, 'Date'] = data.at[index, 'Date'].replace('-', '')
 
     # Setting up data for graphing
     whole_x = pd.concat([x_train, x_test], ignore_index=True)
@@ -47,8 +47,8 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     reg = LinearRegression().fit(x_train, y_train)
 
     # Get prediction based on linear model above
-    #	Note that the features uses for this linear models are PCA, which cannot
-    #		be used for graphing
+    #    Note that the features uses for this linear models are PCA, which cannot
+    #        be used for graphing
     y_pred = reg.predict(x_test)
     y_pred_whole = reg.predict(whole_x)
 
@@ -64,15 +64,15 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     MSE_whole = mean_squared_error(whole_y, y_pred_whole)
 
     # Resulted MSE = 36.84 & MSE_whole = 30.26
-    #	This means prediction using regression model have ~65 accuracy!
-    #		(Accuracy defined as 1-MSE)
+    #    This means prediction using regression model have ~65 accuracy!
+    #        (Accuracy defined as 1-MSE)
     # print(MSE)
     # print(MSE_whole)
 
     # Here is the "simple" plot that takes ~30 seconds to plot
-    #	The blue lines represents actual snow depth, while red lines represents
-    #		predictions
-    #	If you lack patients, please read the attacted screenshot
+    #    The blue lines represents actual snow depth, while red lines represents
+    #        predictions
+    #    If you lack patients, please read the attacted screenshot
     # plt.plot(data['Date'], data["SNWD.I-1 (in) "] ,color='blue')
     # plt.plot(data['Date'], y_pred_whole, color='red')
     print(data)

@@ -137,18 +137,32 @@ def main():
         print(dataset.impute_inputs("2019-12-01", params["timestep"]))
 
         for ann_params in l_ann_params:
-            dataset.run_ANN(ann_params)
+            row = {}
+            (mse, pred) = dataset.run_ANN(ann_params, "ANN" + params["fileparam"])
+            row["method"] = "ANN"
+            row["mse"] = mse
+            row["pred"] = pred
+            row["filename"] = "ANN" + params["fileparam"]
+            row["params"] = params
+            results.append(row.copy())
 
-        # row = {}
-        # (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
-        # row["method"] = "OLS"
-        # row["mse"] = mse
-        # row["pred"] = pred
-        # row["filename"] = "OLS" + params["fileparam"]
-        # row["params"] = params
-        # results.append(row)
+        row = {}
+        (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
+        row["method"] = "OLS"
+        row["mse"] = mse
+        row["pred"] = pred
+        row["filename"] = "OLS" + params["fileparam"]
+        row["params"] = params
+        results.append(row.copy())
 
-        dataset.run_TSNN()
+        row = {}
+        (mse, predlist) = dataset.run_TSNN("TSNN" + params["fileparam"])
+        row["method"] = "TSNN"
+        row["mse"] = mse
+        row["pred"] = predlist
+        row["filename"] = "TSNN" + params["fileparam"]
+        row["params"] = params
+        results.append(row.copy())
 
 
     res_path = os.path.join(os.getcwd(), "results", "results.json")

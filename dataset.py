@@ -56,7 +56,7 @@ class DataSet():
         fullcols = ["Date"] + self.xcols + self.ycols
         return self.df.loc[:,fullcols]
 
-    def run_ANN(self, params):
+    def run_ANN(self, params, filename):
         # retrieve loss and prediction
         # question: what are we actually predicting?
 
@@ -69,13 +69,13 @@ class DataSet():
         self.set_split(0.3)
         return run_OLS_predictor(self.get_data_with_date(), self.get_Xtrain(), self.get_Ytrain(), self.get_Xtest(), self.get_Ytest(), self.pred_input, filename)
 
-    def run_TSNN(self):
+    def run_TSNN(self, filename):
         # will change name when I figure out what it's called
         self._averaged_sites()
         weeks_past = 4
         # dataset = read_csv('test.csv', header=None)
         fullcols = self.xcols + self.ycols
-        print(fullcols)
+        # print(fullcols)
         x = np.array(self.df.loc[:,fullcols].tail(weeks_past))
         input_data = np.expand_dims(x, axis=0)
         # print(np.array([self.df.loc[:,fullcols].tail(weeks_past)]))
@@ -84,7 +84,7 @@ class DataSet():
         # # input_data = np.array([[list(range(0,len(self.pred_input))), self.pred_input]])
         input_data = input_data.reshape(1,weeks_past,len(input_data[0][0]))
         preds = get_predictions(input_data, models)
-        print(preds)
+        # print(preds)
 
     def _averaged_sites(self):
         # average the sites for each week
