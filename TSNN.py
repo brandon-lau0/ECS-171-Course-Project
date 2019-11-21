@@ -151,6 +151,6 @@ def get_predictions(input_data, models):
     important_preds = []
     n = len(predictions)
     for pred in predictions:
-        important_preds = predictions[n-1]
+        important_preds.append(str(pred[0][n-1]))
 
     return important_preds
