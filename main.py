@@ -136,8 +136,8 @@ def main():
 
         print(dataset.impute_inputs("2019-12-01", params["timestep"]))
 
-        # for ann_params in l_ann_params:
-        #     dataset.run_ANN(ann_params)
+        for ann_params in l_ann_params:
+            dataset.run_ANN(ann_params)
 
         # row = {}
         # (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
