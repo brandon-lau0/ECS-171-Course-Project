@@ -91,6 +91,7 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
 
     #fig, axs = plt.subplots(1)
     #fig.set_size_inches(10, 10)
+    plt.figure()
     plt.plot(x_vals, history[0], label="Training")
     plt.plot(x_vals, history[2], label="Testing")
     plt.title('Error')
