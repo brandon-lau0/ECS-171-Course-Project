@@ -11,7 +11,7 @@ l_params = []
 # just for now
 # ANN only
 l_optimizer = ["rmsprop"]
-l_activation = ["softmax","relu","sigmoid","tanh","linear"]
+l_activation = ["relu"]
 l_loss = ["mean_squared_error"]
 l_hiddenlayer = [1, 2]
 l_numneuron = [6, 9, 12]

@@ -121,7 +121,7 @@ def main():
     # if always just snwd, don't need
     l_ycols = ["SNWD.I-1 (in) "]
 
-    res_path = os.path.join(os.getcwd(), "results", "results2.json")
+    res_path = os.path.join(os.getcwd(), "results", "results3.json")
 
     part_res_path = os.path.join(os.getcwd(), "results", "part-results.json")
     for params in l_params:
@@ -148,16 +148,16 @@ def main():
 
         print(dataset.impute_inputs("2019-12-01", params["timestep"]))
 
-        # for ann_params in l_ann_params:
-        #     row = {}
-        #     moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
-        #     (mse, pred) = dataset.run_ANN(ann_params, "ANN" + moreinfo + params["fileparam"])
-        #     row["method"] = "ANN"
-        #     row["mse"] = mse
-        #     row["pred"] = pred
-        #     row["filename"] = "ANN" + params["fileparam"]
-        #     row["params"] = params
-        #     results.append(row.copy())
+        for ann_params in l_ann_params:
+            row = {}
+            moreinfo = f"{ann_params['optimizer']}-{ann_params['hiddenlayer']}-{ann_params['numneuron']}-{ann_params['loss']}-{ann_params['activation']}-"
+            (mse, pred) = dataset.run_ANN(ann_params, "ANN" + moreinfo + params["fileparam"])
+            row["method"] = "ANN"
+            row["mse"] = mse
+            row["pred"] = pred
+            row["filename"] = "ANN" + params["fileparam"]
+            row["params"] = params
+            results.append(row.copy())
 
         # row = {}
         # (mse, pred) = dataset.run_OLS("OLS" + params["fileparam"])
@@ -180,7 +180,7 @@ def main():
             row["filename"] = "TSNN" + params["fileparam"]
             row["params"] = params
             results.append(row.copy())
-            print(results)
+            # print(results)
 
         # with open(part_res_path, 'w') as f:
         #     json.dump(results, f)
