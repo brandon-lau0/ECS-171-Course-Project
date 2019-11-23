@@ -1,0 +1,386 @@
+[
+    {
+        "method": "ANN",
+        "mse": [
+            "872.64484",
+            "819.2473",
+            "784.8983",
+            "754.3522",
+            "720.3219",
+            "687.7277",
+            "655.9859",
+            "625.21216",
+            "596.3772",
+            "568.4989"
+        ],
+        "pred": "[19.190397]",
+        "filename": "ANNrmsprop-1-3-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "891.0131",
+            "831.70764",
+            "793.20624",
+            "764.9522",
+            "733.0192",
+            "701.60254",
+            "669.6895",
+            "638.81274",
+            "608.96484",
+            "581.04645"
+        ],
+        "pred": "[9.183866]",
+        "filename": "ANNrmsprop-1-6-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "883.84564",
+            "825.34216",
+            "789.09845",
+            "758.86707",
+            "726.6532",
+            "694.84393",
+            "663.8376",
+            "633.86285",
+            "604.9161",
+            "577.4396"
+        ],
+        "pred": "[1.5355229]",
+        "filename": "ANNrmsprop-1-9-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "886.5056",
+            "827.09784",
+            "790.4386",
+            "761.9953",
+            "729.96027",
+            "696.93695",
+            "665.02094",
+            "634.2154",
+            "605.5918",
+            "577.51874"
+        ],
+        "pred": "[18.739977]",
+        "filename": "ANNrmsprop-1-12-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "877.7282",
+            "821.09784",
+            "785.93677",
+            "762.72314",
+            "747.8045",
+            "737.81537",
+            "731.2162",
+            "726.8215",
+            "723.24133",
+            "720.84906"
+        ],
+        "pred": "[12.862538]",
+        "filename": "ANNrmsprop-2-3-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "890.288",
+            "827.68195",
+            "790.711",
+            "766.19495",
+            "749.65045",
+            "739.1671",
+            "731.6526",
+            "726.5409",
+            "723.4611",
+            "721.0447"
+        ],
+        "pred": "[12.838552]",
+        "filename": "ANNrmsprop-2-6-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "885.37726",
+            "826.1508",
+            "789.0874",
+            "764.9944",
+            "741.9739",
+            "701.95483",
+            "656.7591",
+            "611.16876",
+            "571.59424",
+            "536.1559"
+        ],
+        "pred": "[1.4299603]",
+        "filename": "ANNrmsprop-2-9-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "888.5092",
+            "826.6058",
+            "789.58527",
+            "765.12305",
+            "731.2102",
+            "684.5806",
+            "638.24756",
+            "595.0913",
+            "556.6457",
+            "521.38403"
+        ],
+        "pred": "[1.2033701]",
+        "filename": "ANNrmsprop-2-12-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "876.69257",
+            "819.45654",
+            "785.4119",
+            "762.68835",
+            "747.5658",
+            "737.393",
+            "730.5868",
+            "726.2277",
+            "723.15875",
+            "720.6953"
+        ],
+        "pred": "[12.872503]",
+        "filename": "ANNrmsprop-3-3-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "893.5065",
+            "829.9557",
+            "791.88116",
+            "767.1877",
+            "750.83777",
+            "739.89624",
+            "732.4812",
+            "727.2664",
+            "723.4968",
+            "720.96155"
+        ],
+        "pred": "[12.879574]",
+        "filename": "ANNrmsprop-3-6-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "887.2709",
+            "826.1982",
+            "789.52454",
+            "765.0887",
+            "749.21497",
+            "738.96063",
+            "732.1528",
+            "727.13464",
+            "723.43677",
+            "721.45593"
+        ],
+        "pred": "[12.837331]",
+        "filename": "ANNrmsprop-3-9-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "888.18945",
+            "826.671",
+            "789.8696",
+            "765.08545",
+            "749.604",
+            "739.285",
+            "732.0565",
+            "727.1399",
+            "723.7585",
+            "720.87177"
+        ],
+        "pred": "[12.830433]",
+        "filename": "ANNrmsprop-3-12-mean_squared_error-softmax-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "softmax"
+        }
+    }
+]

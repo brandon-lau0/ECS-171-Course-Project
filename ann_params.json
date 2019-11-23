@@ -1,1 +1,842 @@
-[{"optimizer": "rmsprop", "hiddenlayer": 1, "numneuron": 6, "loss": "mean_squared_error", "activation": "relu"}, {"optimizer": "rmsprop", "hiddenlayer": 1, "numneuron": 9, "loss": "mean_squared_error", "activation": "relu"}, {"optimizer": "rmsprop", "hiddenlayer": 1, "numneuron": 12, "loss": "mean_squared_error", "activation": "relu"}, {"optimizer": "rmsprop", "hiddenlayer": 2, "numneuron": 6, "loss": "mean_squared_error", "activation": "relu"}, {"optimizer": "rmsprop", "hiddenlayer": 2, "numneuron": 9, "loss": "mean_squared_error", "activation": "relu"}, {"optimizer": "rmsprop", "hiddenlayer": 2, "numneuron": 12, "loss": "mean_squared_error", "activation": "relu"}]
+[
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "sgd",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "softmax"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "sigmoid"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "tanh"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "linear"
+    }
+]

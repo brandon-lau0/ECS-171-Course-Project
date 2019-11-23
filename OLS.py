@@ -51,6 +51,7 @@ def run_OLS_predictor(data, x_train, y_train, x_test, y_test, pred_input, filena
     y_actual = np.array(data["SNWD.I-1 (in) "])
     y_pred_whole = y_pred_whole.flatten()
     date = data['Date']
+    plt.figure()
     plt.scatter(date, y_actual-y_pred_whole, color='green')
     plt.legend
     plt.title('Actual - Predicted')

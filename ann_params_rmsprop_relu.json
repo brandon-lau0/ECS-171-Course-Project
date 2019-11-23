@@ -1,0 +1,86 @@
+[
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 1,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 2,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 3,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 6,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 9,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    },
+    {
+        "optimizer": "rmsprop",
+        "hiddenlayer": 3,
+        "numneuron": 12,
+        "loss": "mean_squared_error",
+        "activation": "relu"
+    }
+]

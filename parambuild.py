@@ -10,11 +10,17 @@ l_params = []
 
 # just for now
 # ANN only
-l_optimizer = ["rmsprop"]
-l_activation = ["relu"]
+# l_optimizer = ["rmsprop"]
+# l_activation = ["relu"]
+# l_loss = ["mean_squared_error"]
+# l_hiddenlayer = [1, 2]
+# l_numneuron = [6, 9, 12]
+
+l_optimizer = ["sgd","rmsprop"]
+l_activation = ["softmax","relu","sigmoid","tanh","linear"]
 l_loss = ["mean_squared_error"]
-l_hiddenlayer = [1, 2]
-l_numneuron = [6, 9, 12]
+l_hiddenlayer = [1, 2, 3]
+l_numneuron = [3, 6, 9, 12]
 
 # All
 l_timestep = []
@@ -33,7 +39,7 @@ for timestep in l_timestep:
     params["fileparam"] =  f"{timestep}-0.25-1-1-1.png"
     l_params.append(params)
 
-for rectradius in l_rectradius:
+for rectradius in [0.5, 0.75, 1]:
     params = {}
     params["timestep"] = "weekly"
     params["rectradius"] = rectradius
@@ -43,7 +49,7 @@ for rectradius in l_rectradius:
     params["fileparam"] =  f"weekly-{rectradius}-1-1-1.png"
     l_params.append(params)
 
-for i in range(0,2):
+for i in range(0,1):
     params = {}
     params["timestep"] = "weekly"
     params["rectradius"] = 0.25
@@ -53,7 +59,7 @@ for i in range(0,2):
     params["fileparam"] =  f"weekly-0.25-{i}-1-1.png"
     l_params.append(params)
 
-for i in range(0,2):
+for i in range(0,1):
     params = {}
     params["timestep"] = "weekly"
     params["rectradius"] = 0.25
@@ -63,7 +69,7 @@ for i in range(0,2):
     params["fileparam"] =  f"weekly-0.25-1-{i}-1.png"
     l_params.append(params)
 
-for i in range(0,2):
+for i in range(0,1):
     params = {}
     params["timestep"] = "weekly"
     params["rectradius"] = 0.25
@@ -86,10 +92,10 @@ for i in range(0,2):
 
 l_ann_params = []
 for optimizer in l_optimizer:
-    for hiddenlayer in l_hiddenlayer:
-        for numneuron in l_numneuron:
-            for loss in l_loss:
-                for activation in l_activation:
+    for activation in l_activation:
+        for loss in l_loss:
+            for hiddenlayer in l_hiddenlayer:
+                for numneuron in l_numneuron:
                     ann_params = {}
                     ann_params["optimizer"] = optimizer
                     ann_params["hiddenlayer"] = hiddenlayer
@@ -100,10 +106,8 @@ for optimizer in l_optimizer:
 
 
 
-
-
-with open('params.json', 'w') as fout:
-    json.dump(l_params, fout)
-
-with open('ann_params.json','w') as fout:
-    json.dump(l_ann_params, fout)
+with open('params1.json', 'w') as fout:
+    json.dump(l_params, fout, indent=4, separators=(',', ': '))
+#
+# with open('ann_params.json','w') as fout:
+#     json.dump(l_ann_params, fout, indent=4, separators=(',', ': '))

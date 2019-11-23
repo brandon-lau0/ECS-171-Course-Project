@@ -1,0 +1,470 @@
+[
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-60.52432977336727"
+            ],
+            [
+                "-68.85284098533735"
+            ],
+            [
+                "-58.21743335462596"
+            ],
+            [
+                "-64.21429027923166"
+            ]
+        ],
+        "pred": [
+            "0.10578969",
+            "0.2098783",
+            "0.40181205",
+            "0.12550026"
+        ],
+        "filename": "TSNNsgd-1-3-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 1,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-49.80039194838641"
+            ],
+            [
+                "-41.73659423932637"
+            ],
+            [
+                "-35.44963540769603"
+            ],
+            [
+                "-37.81171888194672"
+            ]
+        ],
+        "pred": [
+            "0.3601596",
+            "0.17855278",
+            "0.48973998",
+            "0.5729991"
+        ],
+        "filename": "TSNNsgd-1-6-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 1,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-28.18409680666989"
+            ],
+            [
+                "-39.50670788386097"
+            ],
+            [
+                "-29.570375194288278"
+            ],
+            [
+                "-29.535514475548105"
+            ]
+        ],
+        "pred": [
+            "0.15981343",
+            "0.30726743",
+            "0.34697425",
+            "0.41957748"
+        ],
+        "filename": "TSNNsgd-1-9-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 1,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-33.99024992772978"
+            ],
+            [
+                "-24.610964007573585"
+            ],
+            [
+                "-22.89828302435679"
+            ],
+            [
+                "-20.612362419089227"
+            ]
+        ],
+        "pred": [
+            "0.52079666",
+            "0.1839637",
+            "0.35550648",
+            "0.31237727"
+        ],
+        "filename": "TSNNsgd-1-12-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 1,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-49.51698137309453"
+            ],
+            [
+                "-55.05040997021819"
+            ],
+            [
+                "-54.73785452646752"
+            ],
+            [
+                "-46.24935907860325"
+            ]
+        ],
+        "pred": [
+            "0.10342915",
+            "0.3782729",
+            "0.46954104",
+            "0.44293696"
+        ],
+        "filename": "TSNNsgd-2-3-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 2,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-38.019630752197685"
+            ],
+            [
+                "-39.65069712024845"
+            ],
+            [
+                "-34.825485693265314"
+            ],
+            [
+                "-34.9506705035902"
+            ]
+        ],
+        "pred": [
+            "0.19701016",
+            "0.40927634",
+            "0.58850634",
+            "0.39890414"
+        ],
+        "filename": "TSNNsgd-2-6-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 2,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-31.05771542901862"
+            ],
+            [
+                "-25.629272320499158"
+            ],
+            [
+                "-30.828395072727986"
+            ],
+            [
+                "-30.726631177614813"
+            ]
+        ],
+        "pred": [
+            "-0.049756743",
+            "0.26161057",
+            "0.41772908",
+            "0.56861144"
+        ],
+        "filename": "TSNNsgd-2-9-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 2,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-26.449835757686667"
+            ],
+            [
+                "-24.259176816025825"
+            ],
+            [
+                "-26.922575026342315"
+            ],
+            [
+                "-24.861007814537988"
+            ]
+        ],
+        "pred": [
+            "0.26418346",
+            "0.36546326",
+            "0.5033122",
+            "0.5891642"
+        ],
+        "filename": "TSNNsgd-2-12-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 2,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-63.87414380948837"
+            ],
+            [
+                "-63.63471237600666"
+            ],
+            [
+                "-63.778776273335495"
+            ],
+            [
+                "-63.651222856077425"
+            ]
+        ],
+        "pred": [
+            "0.26336354",
+            "0.44119868",
+            "0.5547769",
+            "0.43046296"
+        ],
+        "filename": "TSNNsgd-3-3-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 3,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-56.32231550347315"
+            ],
+            [
+                "-60.982627372219135"
+            ],
+            [
+                "-61.870994829151726"
+            ],
+            [
+                "-61.681997795627545"
+            ]
+        ],
+        "pred": [
+            "0.42161292",
+            "0.36642665",
+            "0.5028902",
+            "0.5272301"
+        ],
+        "filename": "TSNNsgd-3-6-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 3,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-47.847401344612855"
+            ],
+            [
+                "-60.12635581134117"
+            ],
+            [
+                "-55.90132337073757"
+            ],
+            [
+                "-63.21043359416805"
+            ]
+        ],
+        "pred": [
+            "0.54619575",
+            "0.4660657",
+            "0.36833936",
+            "0.49948412"
+        ],
+        "filename": "TSNNsgd-3-9-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 3,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-44.321397415579185"
+            ],
+            [
+                "-36.86985740922902"
+            ],
+            [
+                "-40.49581937920557"
+            ],
+            [
+                "-41.57909875373318"
+            ]
+        ],
+        "pred": [
+            "0.44743156",
+            "0.46075535",
+            "0.43356082",
+            "0.49040136"
+        ],
+        "filename": "TSNNsgd-3-12-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "sgd",
+            "hiddenlayer": 3,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    }
+]

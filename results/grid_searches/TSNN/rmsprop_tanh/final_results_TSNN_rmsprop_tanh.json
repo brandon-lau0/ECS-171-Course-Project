@@ -1,0 +1,470 @@
+[
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-83.14134389866297"
+            ],
+            [
+                "-75.69900425370426"
+            ],
+            [
+                "-82.69113439109738"
+            ],
+            [
+                "-80.21499451484583"
+            ]
+        ],
+        "pred": [
+            "0.41469118",
+            "0.18752998",
+            "0.4049997",
+            "0.3870989"
+        ],
+        "filename": "TSNNrmsprop-1-3-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-75.03727513087327"
+            ],
+            [
+                "-74.88645642577377"
+            ],
+            [
+                "-74.99743486185596"
+            ],
+            [
+                "-75.67944345449749"
+            ]
+        ],
+        "pred": [
+            "0.3549006",
+            "0.40774176",
+            "0.4312702",
+            "0.38126984"
+        ],
+        "filename": "TSNNrmsprop-1-6-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-72.36869731004516"
+            ],
+            [
+                "-72.21028071519447"
+            ],
+            [
+                "-67.65716412796141"
+            ],
+            [
+                "-69.22567845263505"
+            ]
+        ],
+        "pred": [
+            "0.3722884",
+            "0.24275538",
+            "0.33057058",
+            "0.40798613"
+        ],
+        "filename": "TSNNrmsprop-1-9-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-67.3092910089109"
+            ],
+            [
+                "-68.56443658726265"
+            ],
+            [
+                "-66.32073777883429"
+            ],
+            [
+                "-65.34710214720809"
+            ]
+        ],
+        "pred": [
+            "0.29499945",
+            "0.3103139",
+            "0.36512437",
+            "0.48898143"
+        ],
+        "filename": "TSNNrmsprop-1-12-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-78.0264704927598"
+            ],
+            [
+                "-78.68075732172352"
+            ],
+            [
+                "-78.26857482550079"
+            ],
+            [
+                "-76.17632848631642"
+            ]
+        ],
+        "pred": [
+            "0.37930682",
+            "0.28978053",
+            "0.36477137",
+            "0.35554135"
+        ],
+        "filename": "TSNNrmsprop-2-3-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-73.37191282472995"
+            ],
+            [
+                "-72.67081470267006"
+            ],
+            [
+                "-69.66538702967028"
+            ],
+            [
+                "-71.43609529789792"
+            ]
+        ],
+        "pred": [
+            "0.35772258",
+            "0.39893788",
+            "0.41433564",
+            "0.36476386"
+        ],
+        "filename": "TSNNrmsprop-2-6-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-69.01820506201419"
+            ],
+            [
+                "-67.88827187731249"
+            ],
+            [
+                "-64.2684933733042"
+            ],
+            [
+                "-65.57768957235226"
+            ]
+        ],
+        "pred": [
+            "0.36834008",
+            "0.41850257",
+            "0.38609993",
+            "0.37104505"
+        ],
+        "filename": "TSNNrmsprop-2-9-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-65.46293400763852"
+            ],
+            [
+                "-63.36456404190051"
+            ],
+            [
+                "-63.017204440823974"
+            ],
+            [
+                "-62.764226211362505"
+            ]
+        ],
+        "pred": [
+            "0.34024182",
+            "0.33386257",
+            "0.45549208",
+            "0.40682805"
+        ],
+        "filename": "TSNNrmsprop-2-12-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-77.72561770085602"
+            ],
+            [
+                "-77.32220247030666"
+            ],
+            [
+                "-76.86653123107062"
+            ],
+            [
+                "-77.63468234220596"
+            ]
+        ],
+        "pred": [
+            "0.21908009",
+            "0.39667028",
+            "0.48711458",
+            "0.2669915"
+        ],
+        "filename": "TSNNrmsprop-3-3-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-73.22753985287392"
+            ],
+            [
+                "-71.38179029630217"
+            ],
+            [
+                "-72.34345318274956"
+            ],
+            [
+                "-70.8797929288998"
+            ]
+        ],
+        "pred": [
+            "0.37593964",
+            "0.38942587",
+            "0.3562612",
+            "0.40881333"
+        ],
+        "filename": "TSNNrmsprop-3-6-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-67.5327616520226"
+            ],
+            [
+                "-67.36238028514774"
+            ],
+            [
+                "-67.77898631867481"
+            ],
+            [
+                "-66.73728294405218"
+            ]
+        ],
+        "pred": [
+            "0.34953046",
+            "0.41853854",
+            "0.45196274",
+            "0.5381899"
+        ],
+        "filename": "TSNNrmsprop-3-9-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-64.08491859482984"
+            ],
+            [
+                "-62.89446101965357"
+            ],
+            [
+                "-63.26958175881268"
+            ],
+            [
+                "-61.77756646949135"
+            ]
+        ],
+        "pred": [
+            "0.36114895",
+            "0.4598037",
+            "0.22462395",
+            "0.34329203"
+        ],
+        "filename": "TSNNrmsprop-3-12-mean_squared_error-tanh-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "tanh"
+        }
+    }
+]

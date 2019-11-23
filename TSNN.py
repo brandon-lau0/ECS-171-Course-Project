@@ -108,7 +108,7 @@ def get_model(train_x, train_y, nodes_per_layer=5, hidden_layers=1, activation_f
 
     error = []
 
-    for e in np.nditer(1 - history[3][len(history[1])-1]):
+    for e in np.nditer(1 - history[2][len(history[0])-1]):
         error.append(str(e))
 
     return (model, error)
