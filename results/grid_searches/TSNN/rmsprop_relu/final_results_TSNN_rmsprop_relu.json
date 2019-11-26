@@ -1,0 +1,470 @@
+[
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-10.347067000931256"
+            ],
+            [
+                "-3.569477763486235"
+            ],
+            [
+                "-43.40061820696478"
+            ],
+            [
+                "-15.756371658958802"
+            ]
+        ],
+        "pred": [
+            "0.53276795",
+            "0.3264044",
+            "0.038627535",
+            "-0.06530188"
+        ],
+        "filename": "TSNNrmsprop-1-3-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-2.136587985778508"
+            ],
+            [
+                "-3.380557892665471"
+            ],
+            [
+                "-5.765100674678202"
+            ],
+            [
+                "-3.2543091618851436"
+            ]
+        ],
+        "pred": [
+            "0.22541143",
+            "0.35099983",
+            "0.33902785",
+            "-0.02410695"
+        ],
+        "filename": "TSNNrmsprop-1-6-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-2.0362504704357827"
+            ],
+            [
+                "-3.9762703388521112"
+            ],
+            [
+                "-2.118338835566011"
+            ],
+            [
+                "-1.539008469206013"
+            ]
+        ],
+        "pred": [
+            "0.275806",
+            "0.2859851",
+            "0.4469011",
+            "0.48533532"
+        ],
+        "filename": "TSNNrmsprop-1-9-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-1.896693683038019"
+            ],
+            [
+                "-1.8067760118474698"
+            ],
+            [
+                "-2.3271460364738554"
+            ],
+            [
+                "-1.465718312826875"
+            ]
+        ],
+        "pred": [
+            "0.026163086",
+            "0.7373534",
+            "0.3027358",
+            "0.0873269"
+        ],
+        "filename": "TSNNrmsprop-1-12-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-96.79567986484362"
+            ],
+            [
+                "-96.58763981414066"
+            ],
+            [
+                "-96.00541161174235"
+            ],
+            [
+                "-5.395152901541697"
+            ]
+        ],
+        "pred": [
+            "0.36610994",
+            "0.3659245",
+            "0.13068464",
+            "0.0065846145"
+        ],
+        "filename": "TSNNrmsprop-2-3-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-2.908832392668071"
+            ],
+            [
+                "-6.411298638337279"
+            ],
+            [
+                "-2.321282616420968"
+            ],
+            [
+                "-96.17700372610803"
+            ]
+        ],
+        "pred": [
+            "0.2121485",
+            "0.16459951",
+            "0.3587837",
+            "0.3712097"
+        ],
+        "filename": "TSNNrmsprop-2-6-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-3.576771748188424"
+            ],
+            [
+                "-4.6465896457841955"
+            ],
+            [
+                "-2.770934439685247"
+            ],
+            [
+                "-3.281089751483643"
+            ]
+        ],
+        "pred": [
+            "0.36073035",
+            "0.03507327",
+            "-0.07433522",
+            "0.09062204"
+        ],
+        "filename": "TSNNrmsprop-2-9-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-2.194658056922155"
+            ],
+            [
+                "-2.1178881837284727"
+            ],
+            [
+                "-1.4496973857079465"
+            ],
+            [
+                "-1.1666044194812644"
+            ]
+        ],
+        "pred": [
+            "0.17466494",
+            "0.24449073",
+            "0.18133232",
+            "0.35133696"
+        ],
+        "filename": "TSNNrmsprop-2-12-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-4.528447569233098"
+            ],
+            [
+                "-6.62152734888743"
+            ],
+            [
+                "-2.951460301059566"
+            ],
+            [
+                "-27.97172939654899"
+            ]
+        ],
+        "pred": [
+            "0.13824685",
+            "0.34621608",
+            "0.19515422",
+            "0.29637387"
+        ],
+        "filename": "TSNNrmsprop-3-3-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-2.897891961548426"
+            ],
+            [
+                "-3.1999145754396103"
+            ],
+            [
+                "-11.704576500678716"
+            ],
+            [
+                "-2.9352999398969626"
+            ]
+        ],
+        "pred": [
+            "0.29245153",
+            "0.18995407",
+            "0.29801163",
+            "0.3731258"
+        ],
+        "filename": "TSNNrmsprop-3-6-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-1.2741072169721943"
+            ],
+            [
+                "-1.7133243892801135"
+            ],
+            [
+                "-2.009700487737786"
+            ],
+            [
+                "-2.2150842508632844"
+            ]
+        ],
+        "pred": [
+            "0.37849614",
+            "0.24254431",
+            "0.327001",
+            "0.41362354"
+        ],
+        "filename": "TSNNrmsprop-3-9-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-1.0622010088130218"
+            ],
+            [
+                "-2.3099966668715215"
+            ],
+            [
+                "-1.7815239579506117"
+            ],
+            [
+                "-1.222000864270615"
+            ]
+        ],
+        "pred": [
+            "0.14686085",
+            "0.391293",
+            "0.37253833",
+            "0.3956557"
+        ],
+        "filename": "TSNNrmsprop-3-12-mean_squared_error-relu-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "relu"
+        }
+    }
+]

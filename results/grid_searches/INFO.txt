@@ -1,0 +1,31 @@
+Dataset params: params.json
+Nerual Net params: ann_params_{optimizer}_{activation}.json
+Results: final_results_{NN_type}_{optimizer}_{activation}.json
+
+Results folder structure:
+results
+  |__grid_searches
+    |__{NN_type}
+      |__{optimizer}_{activation}
+
+Inside each {optimizer}_{activation} folder, there is a results_*.json file
+
+
+Dataset params stay the same:
+[
+    {
+        "timestep": "weekly",
+        "rectradius": 0.25,
+        "remove_outliers": 1,
+        "scale_data": 1,
+        "use_pca": 1,
+        "fileparam": "weekly-0.25-1-1-1.png"
+    }
+]
+
+Ann params cycle through these options:
+
+l_hiddenlayer = [1, 2, 3]
+l_numneuron = [3, 6, 9, 12]
+
+along with the {optimizer} and {activation} that are in the root folder name

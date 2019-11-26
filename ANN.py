@@ -39,15 +39,12 @@ def create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation
 
   model.add(Dense(1, activation='relu', bias_initializer='ones'))
 
-  # sgd = optimizers.SGD(lr=0.01, clipnorm=1.)
-  # sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-  # model.compile(optimizer=sgd, loss=loss, metrics=[metric])
 
-  model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
+  model.compile(optimizer=optimizer, loss=loss, metrics=['mean_squared_error'])
 
   return model
 
-def train(dataframe, XCols, YCol):
+def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   '''
   Trains and model using provided data and outputs the accuracy graph.
 
@@ -56,25 +53,32 @@ def train(dataframe, XCols, YCol):
   XCols (list of strings) - contains the relevant feature names for the X values
   YCol (list of strings) - contains the feature name of the Y value you're predicting
 
+  params (dict) - contains the hyperparameters
+  filePathToSaveGraph (str) - file path of where to save the graph
   Returns:
-  None (displays a graph)
+  Tuple containing: (model error, predicted snow depth)
   '''
   input_dimension = len(XCols)
-  num_hidden_layers = 2
-  num_neurons = 3
-  activation_func = 'relu'
-  optimizer = 'sgd'
-  loss = 'mean_squared_error'
-
+  num_hidden_layers = params["hiddenlayer"]
+  num_neurons = params["numneuron"]
+  activation_func = params["activation"]
+  optimizer = params["optimizer"]
+  loss = params["loss"]
   model = create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation_func, optimizer, loss)
+  history = model.fit(dataframe[XCols], dataframe[YCol], epochs=10, batch_size=1, validation_split=0.34)
+  result = model.predict(np.array([pred_input]))
 
-  history = model.fit(dataframe[XCols], dataframe[YCol], epochs=5, batch_size=1, validation_split=0.34)
-
-  plt.plot(1 - np.array(history.history['accuracy']))
-  plt.plot(1 - np.array(history.history['val_accuracy']))
+  # plot results
+  plt.figure()
+  plt.plot(np.array(history.history['mean_squared_error']))
+  plt.plot(np.array(history.history['val_mean_squared_error']))
   plt.title('Model Error for Training vs. Testing Data')
   plt.ylabel('error')
   plt.xlabel('epoch')
+  plt.xticks(np.arange(0,10,step=1))
   plt.legend(['training', 'testing'], loc='upper right')
-  plt.show()
-  
+  plt.savefig(filePathToSaveGraph)
+  error = []
+  for e in np.nditer(np.array(history.history['mean_squared_error'])):
+    error.append(str(e))
+  return error, str(result[0])

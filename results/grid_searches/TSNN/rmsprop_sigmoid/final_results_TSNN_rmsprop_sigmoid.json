@@ -1,0 +1,470 @@
+[
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-73.54285017349949"
+            ],
+            [
+                "-74.79891537885143"
+            ],
+            [
+                "-73.60144141806315"
+            ],
+            [
+                "-74.02197073910334"
+            ]
+        ],
+        "pred": [
+            "0.29661733",
+            "0.38932404",
+            "0.32710028",
+            "0.37527752"
+        ],
+        "filename": "TSNNrmsprop-1-3-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-71.25896191311209"
+            ],
+            [
+                "-73.36835502598383"
+            ],
+            [
+                "-69.12359826246353"
+            ],
+            [
+                "-73.85144666245539"
+            ]
+        ],
+        "pred": [
+            "0.21565205",
+            "0.3996536",
+            "0.2975259",
+            "0.35515022"
+        ],
+        "filename": "TSNNrmsprop-1-6-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-68.80405198507113"
+            ],
+            [
+                "-68.93059869375948"
+            ],
+            [
+                "-70.84117526857004"
+            ],
+            [
+                "-72.47635584069441"
+            ]
+        ],
+        "pred": [
+            "0.37447178",
+            "0.3861158",
+            "0.38225976",
+            "0.3655767"
+        ],
+        "filename": "TSNNrmsprop-1-9-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-62.42928229578554"
+            ],
+            [
+                "-68.39186006182268"
+            ],
+            [
+                "-68.78220366992771"
+            ],
+            [
+                "-64.0792873465035"
+            ]
+        ],
+        "pred": [
+            "0.38920647",
+            "0.41128463",
+            "0.39215767",
+            "0.3905597"
+        ],
+        "filename": "TSNNrmsprop-1-12-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-75.93772451926584"
+            ],
+            [
+                "-77.67544753533112"
+            ],
+            [
+                "-76.65919928232285"
+            ],
+            [
+                "-76.57514874126814"
+            ]
+        ],
+        "pred": [
+            "0.3781068",
+            "0.3827244",
+            "0.37278697",
+            "0.38650146"
+        ],
+        "filename": "TSNNrmsprop-2-3-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-75.1371825329245"
+            ],
+            [
+                "-73.82541657678068"
+            ],
+            [
+                "-71.87068704097238"
+            ],
+            [
+                "-72.56033456611307"
+            ]
+        ],
+        "pred": [
+            "0.37351266",
+            "0.36294514",
+            "0.35748407",
+            "0.36062384"
+        ],
+        "filename": "TSNNrmsprop-2-6-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-72.07305553433014"
+            ],
+            [
+                "-72.13997933880924"
+            ],
+            [
+                "-69.45990631515032"
+            ],
+            [
+                "-69.19955332965067"
+            ]
+        ],
+        "pred": [
+            "0.38892096",
+            "0.36221123",
+            "0.41044083",
+            "0.38540542"
+        ],
+        "filename": "TSNNrmsprop-2-9-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-62.09200070655509"
+            ],
+            [
+                "-65.04208187534384"
+            ],
+            [
+                "-68.48312127753479"
+            ],
+            [
+                "-68.11403231751429"
+            ]
+        ],
+        "pred": [
+            "0.39059797",
+            "0.38632643",
+            "0.38332886",
+            "0.3733679"
+        ],
+        "filename": "TSNNrmsprop-2-12-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-77.04293258508591"
+            ],
+            [
+                "-75.84880902628376"
+            ],
+            [
+                "-74.16919503759031"
+            ],
+            [
+                "-76.0901504081406"
+            ]
+        ],
+        "pred": [
+            "0.3886321",
+            "0.3802392",
+            "0.39070553",
+            "0.38780752"
+        ],
+        "filename": "TSNNrmsprop-3-3-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-69.68774970753552"
+            ],
+            [
+                "-73.90324051453642"
+            ],
+            [
+                "-77.2316496193613"
+            ],
+            [
+                "-72.18294508979746"
+            ]
+        ],
+        "pred": [
+            "0.3716697",
+            "0.3916623",
+            "0.39085618",
+            "0.39874482"
+        ],
+        "filename": "TSNNrmsprop-3-6-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-70.52861103129713"
+            ],
+            [
+                "-70.57739785844332"
+            ],
+            [
+                "-71.40369207891699"
+            ],
+            [
+                "-67.9421101416627"
+            ]
+        ],
+        "pred": [
+            "0.38937637",
+            "0.3831593",
+            "0.3910714",
+            "0.40593058"
+        ],
+        "filename": "TSNNrmsprop-3-9-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    },
+    {
+        "method": "TSNN",
+        "mse": [
+            [
+                "-68.88130909122833"
+            ],
+            [
+                "-64.72345548459928"
+            ],
+            [
+                "-67.43818263158407"
+            ],
+            [
+                "-66.56236630269926"
+            ]
+        ],
+        "pred": [
+            "0.43653548",
+            "0.38885868",
+            "0.3976129",
+            "0.38622066"
+        ],
+        "filename": "TSNNrmsprop-3-12-mean_squared_error-sigmoid-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "sigmoid"
+        }
+    }
+]

@@ -1,0 +1,386 @@
+[
+    {
+        "method": "ANN",
+        "mse": [
+            "853.7821",
+            "853.7829",
+            "853.7815",
+            "853.78204",
+            "853.78217",
+            "853.7816",
+            "853.78107",
+            "853.7821",
+            "853.7814",
+            "853.7815"
+        ],
+        "pred": "[0.]",
+        "filename": "ANNrmsprop-1-3-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "853.7816",
+            "853.7819",
+            "853.7821",
+            "853.78125",
+            "853.78235",
+            "853.78156",
+            "853.7816",
+            "853.7826",
+            "853.7818",
+            "853.7821"
+        ],
+        "pred": "[0.]",
+        "filename": "ANNrmsprop-1-6-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "632.1746",
+            "571.8809",
+            "534.7448",
+            "482.47565",
+            "430.74948",
+            "385.78445",
+            "351.82193",
+            "321.89725",
+            "298.9213",
+            "276.2151"
+        ],
+        "pred": "[329.9066]",
+        "filename": "ANNrmsprop-1-9-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "623.75183",
+            "566.72076",
+            "525.56647",
+            "469.89536",
+            "417.3522",
+            "373.8103",
+            "338.04208",
+            "307.59982",
+            "280.56546",
+            "256.55774"
+        ],
+        "pred": "[274.4251]",
+        "filename": "ANNrmsprop-1-12-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 1,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "853.7823",
+            "853.7815",
+            "853.7816",
+            "853.7813",
+            "853.78174",
+            "853.7816",
+            "853.78174",
+            "853.7819",
+            "853.7814",
+            "853.7818"
+        ],
+        "pred": "[0.]",
+        "filename": "ANNrmsprop-2-3-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "616.6204",
+            "547.51086",
+            "436.87198",
+            "330.05783",
+            "273.3702",
+            "233.39128",
+            "202.02345",
+            "176.38509",
+            "154.31705",
+            "135.16614"
+        ],
+        "pred": "[420.34692]",
+        "filename": "ANNrmsprop-2-6-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "853.78064",
+            "853.7818",
+            "853.7826",
+            "853.78235",
+            "853.78204",
+            "853.78156",
+            "853.78186",
+            "853.78174",
+            "853.7821",
+            "853.78204"
+        ],
+        "pred": "[0.]",
+        "filename": "ANNrmsprop-2-9-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "595.82355",
+            "441.6586",
+            "300.9637",
+            "194.60657",
+            "129.43388",
+            "94.6848",
+            "74.34915",
+            "60.88254",
+            "53.19017",
+            "47.681637"
+        ],
+        "pred": "[331.11566]",
+        "filename": "ANNrmsprop-2-12-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 2,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "605.8614",
+            "549.53156",
+            "446.21707",
+            "342.52368",
+            "265.39258",
+            "206.6599",
+            "166.28836",
+            "139.64873",
+            "117.149574",
+            "99.9088"
+        ],
+        "pred": "[439.7398]",
+        "filename": "ANNrmsprop-3-3-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 3,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "853.78186",
+            "853.7819",
+            "853.78174",
+            "853.7818",
+            "853.7825",
+            "853.78174",
+            "853.7818",
+            "853.7818",
+            "853.7816",
+            "853.78186"
+        ],
+        "pred": "[5.190505]",
+        "filename": "ANNrmsprop-3-6-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 6,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "571.6034",
+            "369.465",
+            "250.88005",
+            "180.79439",
+            "131.9238",
+            "94.93741",
+            "69.59357",
+            "54.716694",
+            "47.12213",
+            "44.389996"
+        ],
+        "pred": "[849.3838]",
+        "filename": "ANNrmsprop-3-9-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 9,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    },
+    {
+        "method": "ANN",
+        "mse": [
+            "563.35596",
+            "303.27682",
+            "176.73206",
+            "112.11826",
+            "77.87439",
+            "64.77281",
+            "59.45652",
+            "55.02708",
+            "51.32818",
+            "48.107887"
+        ],
+        "pred": "[1264.2056]",
+        "filename": "ANNrmsprop-3-12-mean_squared_error-linear-weekly-0.25-1-1-1.png",
+        "params": {
+            "timestep": "weekly",
+            "rectradius": 0.25,
+            "remove_outliers": 1,
+            "scale_data": 1,
+            "use_pca": 1,
+            "fileparam": "weekly-0.25-1-1-1.png"
+        },
+        "ann_params": {
+            "optimizer": "rmsprop",
+            "hiddenlayer": 3,
+            "numneuron": 12,
+            "loss": "mean_squared_error",
+            "activation": "linear"
+        }
+    }
+]

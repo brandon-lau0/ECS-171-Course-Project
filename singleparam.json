@@ -1,0 +1,8 @@
+[{
+    "timestep": "weekly",
+    "rectradius": 0.25,
+    "remove_outliers": 1,
+    "scale_data": 1,
+    "use_pca": 0,
+    "fileparam": "weekly-0.25-1-1-0.png"
+}]
