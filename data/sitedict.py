@@ -13,10 +13,13 @@ import json
 SITEDICT = {}
 
 sitedictpath = os.path.join(os.getcwd(), "sitedict.json")
+
+# If the json file already exists, load it
 if os.path.exists(sitedictpath):
     with open(sitedictpath, 'r') as fin:
         SITEDICT = json.load(fin)
 else:
+    # Convert text file to dictionary of dictionaries
     with open(os.path.join(os.getcwd(), "data", "info.txt")) as f:
         for line in f:
             (name, id, lat, long) = line.split("\t")
@@ -25,5 +28,6 @@ else:
             innerdict["lat"] = lat
             innerdict["long"] = long
             SITEDICT[str(id)] = innerdict
+    # Save dictionaries to json
     with open(sitedictpath, 'w') as fout:
         json.dump(SITEDICT, fout)

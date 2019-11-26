@@ -8,14 +8,7 @@ import json
 
 l_params = []
 
-# just for now
 # ANN only
-# l_optimizer = ["rmsprop"]
-# l_activation = ["relu"]
-# l_loss = ["mean_squared_error"]
-# l_hiddenlayer = [1, 2]
-# l_numneuron = [6, 9, 12]
-
 l_optimizer = ["sgd","rmsprop"]
 l_activation = ["softmax","relu","sigmoid","tanh","linear"]
 l_loss = ["mean_squared_error"]
@@ -28,6 +21,7 @@ for timestep in Timestep:
     l_timestep.append(timestep.name)
 l_rectradius = [0.25, 0.5, 0.75, 1]
 
+# Use various for loops to build l_param list of dictionaries
 
 for timestep in l_timestep:
     params = {}
@@ -105,9 +99,9 @@ for optimizer in l_optimizer:
                     l_ann_params.append(ann_params)
 
 
-
+# Save params and ann_params to json files for use with main.py
 with open('params1.json', 'w') as fout:
     json.dump(l_params, fout, indent=4, separators=(',', ': '))
-#
-# with open('ann_params.json','w') as fout:
-#     json.dump(l_ann_params, fout, indent=4, separators=(',', ': '))
+
+with open('ann_params.json','w') as fout:
+    json.dump(l_ann_params, fout, indent=4, separators=(',', ': '))

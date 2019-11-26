@@ -19,19 +19,18 @@ from sitedict import *
 import joblib
 
 # used in format_date() and get_past_dates()
-
 from dateutil.relativedelta import relativedelta
 
 import numpy as np # used in _encode_cyclical_data()
 
+# This enum is not super useful because there are only two timesteps but it
+# does help us keep track of the timesteps
 class Timestep(enum.Enum):
     daily = 1
     weekly = 2
 
 # Builder for DataSet class
 class DataSet_Builder():
-
-
 
     def __init__(self):
         # defaults
@@ -52,8 +51,6 @@ class DataSet_Builder():
             self.df.to_pickle(pklpath)
 
 
-
-
     # encodes dates so that cyclical nature of days in year is preserved
     def format_date(self):
         self.df['date_object'] = [datetime.strptime(date, '%m/%d/%Y') for date in self.df['Date']]
@@ -67,12 +64,7 @@ class DataSet_Builder():
 
         self.df = self.df.drop("day_of_year",1)
 
-        # TODO be able to take a future date (ex. 2020-07-18) and return 2019-07-18, 2018-07-18, etc. (+/- 1 day)
-            # ACCOUNT FOR leap years, removed outliers (search for closest day, or leave out of average?)
-
-
-
-
+    # Performs sine and cosine operation
     def _encode_cyclical_data(self, col_name, max_val):
         self.df[col_name + '_sin'] = np.sin(2 * np.pi * self.df[col_name]/max_val)
         self.df[col_name + '_cos'] = np.cos(2 * np.pi * self.df[col_name]/max_val)
@@ -80,13 +72,8 @@ class DataSet_Builder():
         self.xcols.append(col_name + '_sin')
         self.xcols.append(col_name + '_cos')
 
-
-
+    # Uses IsolationForest to remove outliers and overwrite dataframe
     def remove_outliers(self):
-        #optional
-        # TODO
-        # Prints number of outliers found with IsolationForest
-        # Returns a new df that doesn't contain the outliers
         clf = IsolationForest(n_estimators=20, contamination=0.1, behaviour='new')
         pred = clf.fit_predict(self.df.loc[:,self.xcols + self.ycols])
         self.df = self.df[pred!=-1]
@@ -106,26 +93,21 @@ class DataSet_Builder():
     def use_pca(self):
         # change df, xcols, and ycols appropriately
         old_df = self.df[self.xcols]
-        # print(old_df)
         columns_to_center = old_df.columns.difference(['day_of_year_sin', 'day_of_year_cos'])
         centered_data = stats.zscore(old_df[columns_to_center])
         centered_data = pd.DataFrame(data = centered_data, columns=columns_to_center)
+        # we don't want to remove day_of_year_sin or day_of_year_cos because we
+        # need to be able to impute those later
         unchanged = ['day_of_year_sin', 'day_of_year_cos']
         new_df = pd.concat([centered_data, old_df.loc[:,unchanged]], axis=1)
-        # print(new_df)
-        #means = old_df.mean(axis=0)
-        # print(self.df[self.xcols])
-        # for col in old_df:
 
-        principalComponents = self.pca.fit_transform(new_df) # #drop(['Date'], axis=1)
+        principalComponents = self.pca.fit_transform(new_df)
         principalDf = pd.DataFrame(data = principalComponents)
-        print(principalDf)
-        # self.df = self.df.drop(self.xcols, axis=1)
         self.df = pd.concat([self.df, principalDf], axis=1)
-
 
         self.xcols = list(principalDf.columns)
 
+        # Save pca in case we want to reuse it
         pca_filename = "pca.save"
         joblib.dump(self.pca, pca_filename)
 
@@ -133,11 +115,10 @@ class DataSet_Builder():
 
     def scale_data(self):
         # min max scaling just on the xcols
-        # optional
-
         self.scaler.fit(self.df.loc[:,self.xcols])
         self.df[self.xcols] = self.scaler.transform(self.df.loc[:,self.xcols])
 
+        # Save scaler in case we want to reuse it later
         scaler_filename = "scaler.save"
         joblib.dump(self.scaler, scaler_filename)
 
@@ -148,17 +129,15 @@ class DataSet_Builder():
         self.df = self._get_df_of_radius(proportion)
 
     def build_dataset(self, origxcols, scale_data):
-
         self._use_timestep()
         return DataSet(self.df, self.xcols, self.ycols, self.pca, origxcols, self.scaler, scale_data)
 
     def clean_df(self):
-        # drop off rows with blank values for x or y col
-        # treat -99.9 as NaN
-
+        # Format the date cyclically
         self.format_date()
 
-
+        # drop off rows with blank values for x or y col
+        # treat -99.9 as NaN
         for col in self.xcols + self.ycols:
             self.df.drop(self.df.index[self.df[col] == -99.9], inplace = True)
         self.df = self.df.dropna(subset=self.xcols+self.ycols)
@@ -166,7 +145,7 @@ class DataSet_Builder():
 
     def _use_timestep(self):
         # if timestep is weekly, average for the week
-
+        # also changes Date col to a Datetime object
         if self.timestep == Timestep.weekly:
             self._weekly_average()
 
@@ -240,16 +219,3 @@ class DataSet_Builder():
         minv = min(float(SITEDICT[site][key_str]) for site in SITEDICT.keys())
         maxv = max(float(SITEDICT[site][key_str]) for site in SITEDICT.keys())
         return minv, maxv
-
-
-    # probably deleting
-
-    # # Returns a cleaned dataframe with the columns of the features removed
-    # # features: an array of strings of feature names
-    # # ex. ['mpg', 'car name']
-    # # df (optional): dataframe, if not specified will use self.df
-    # def remove_features(self, features, df=None):
-    #     if df is None:
-    #         df = self.df
-    #     self.cleaned_df = df.drop(features, axis=1)
-    #     return self.cleaned_df

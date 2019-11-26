@@ -59,39 +59,32 @@ class DataSet():
         return self.df.loc[:,fullcols]
 
     def run_ANN(self, params, filename):
-        # retrieve loss and prediction
-        # question: what are we actually predicting?
+        # retrieve loss and prediction for ANN
         fpath = os.path.join(os.getcwd(), "results", filename)
         print(self.pred_input)
         (mse, pred) = train(self.df, self.xcols, self.ycols, params, fpath, self.pred_input)
         return mse, pred
 
     def run_OLS(self, filename):
-        # retrieve loss and prediction
-        # set default split of 0.3
+        # retrieve loss and prediction for OLS
+        # set split of 0.3
         self.set_split(0.3)
         return run_OLS_predictor(self.get_data_with_date(), self.get_Xtrain(), self.get_Ytrain(), self.get_Xtest(), self.get_Ytest(), self.pred_input, filename)
 
     def run_TSNN(self, filename, params):
-        # will change name when I figure out what it's called
+        # retrieve loss and predictions for TSNN
         self._averaged_sites()
         weeks_past = 4
-        # dataset = read_csv('test.csv', header=None)
         fullcols = self.xcols + self.ycols
-        # print(fullcols)
         x = np.array(self.df.loc[:,fullcols].tail(weeks_past))
         input_data = np.expand_dims(x, axis=0)
         fpath = os.path.join(os.getcwd(), "results", filename)
-        # print(np.array([self.df.loc[:,fullcols].tail(weeks_past)]))
         models = get_future_models(self.df.loc[:,fullcols], nodes_per_layer=params["numneuron"],
                 hidden_layers=params["hiddenlayer"], activation_func=params["activation"],
                 loss_func =params["loss"], opt=params["optimizer"],num_epochs=20, back_steps=weeks_past, future_steps=4, graph_path=fpath)
         error = models[1]
-        # input_data = np.array([self.df.loc[:,fullcols].tail(weeks_past)])
-        # # input_data = np.array([[list(range(0,len(self.pred_input))), self.pred_input]])
         input_data = input_data.reshape(1,weeks_past,len(input_data[0][0]))
         preds = get_predictions(input_data, models[0])
-        # print(preds)
         return error, preds
 
     def _averaged_sites(self):
@@ -100,11 +93,7 @@ class DataSet():
 
 
     def impute_inputs(self, future_date, time_step):
-
-
-
-
-
+        # Makes a list of inputs for OLS and ANN for the days we want to predict
         rows = self._get_past_dates(future_date, time_step)
 
         inputs = []
@@ -113,16 +102,19 @@ class DataSet():
         day_of_year = date_obj.timetuple().tm_yday
 
 
-
+        # take the average of past dates
         for col in self.origxcols:
             inputs.append(rows[col].mean())
 
+        # sin and cos of dates
         inputs.append(np.sin(2 * np.pi * day_of_year/365))
         inputs.append(np.cos(2 * np.pi * day_of_year/365))
 
 
         cols =  self.origxcols +  ["day_of_year_sin","day_of_year_cos"]
-        if "day_of_year_sin" not in self.xcols: # PCA
+
+        # PCA was selected so do the PCA on these cols
+        if "day_of_year_sin" not in self.xcols:
             self.pca = joblib.load("pca.save")
             singledf = pd.DataFrame(columns=cols)
             singledf.loc[0] = inputs
@@ -132,8 +124,7 @@ class DataSet():
             inputs = list(inputdf.iloc[0])
             cols = list(inputdf.columns)
 
-
-
+        # Scale data was selected so scale data
         if self.scale_data == 1:
             self.scaler = joblib.load("scaler.save")
             singledf = pd.DataFrame(columns = cols)
@@ -168,6 +159,7 @@ class DataSet():
 
         list_of_dates = []
         while past_date < future_date_object:
+            # we want that day, the day before, and the day after
             yesterday = past_date - timedelta(days=1)
             tomorrow = past_date + timedelta(days=1)
             list_of_dates.append(yesterday.strftime(date_format_string))
@@ -178,41 +170,5 @@ class DataSet():
 
         past_dates = self.df[self.df['Date'].isin(list_of_dates)] # note: might be inefficient
 
-        # while past_date < future_date_object:
-        #     past_dates.append(self.df.loc[df['Date'] == past_date.strftime(date_format_string)]) # FIXME how efficient is this retrieval??
-        #     past_date = past_date + relativedelta(years = 1) # go to same date, 1 year in the future
-
-        # if self.df['Date'] == past_date.strftime(date_format_string):
-        #     past_dates.append(row)
 
         return past_dates
-        # return []
-
-
-
-
-    # # Returns a tuple of the training and testing dataframes
-    # # train_prop: proportion of data to be trained
-    # # df (optional): dataframe, by default will use self.df
-    # # random (optional): whether to randomize the rows, by default will not randomize
-    # def split_data(self, train_prop, df=None, random=False):
-    #     if df is None:
-    #         df = self.df
-    #     train, test = train_test_split(df, train_size=train_prop, shuffle=random)
-    #     self.train = train
-    #     self.test = test
-    #     return train, test
-    #
-    # # Returns a tuple of the X and Y dataframes
-    # # y_colname: name of the Y column
-    # # df (optional): dataframe, by default will use self.df
-    # def split_X_Y(self, y_colname, df=None):
-    #     if df is None:
-    #         df = self.df
-    #     self.df_X = df.drop(columns=[y_colname])
-    #     self.df_Y = df[[y_colname]]
-    #     return self.df_X, self.df_Y
-
-
-    # def get_cleaned_df(self):
-    #     return self.cleaned_df

@@ -39,9 +39,6 @@ def create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation
 
   model.add(Dense(1, activation='relu', bias_initializer='ones'))
 
-  # sgd = optimizers.SGD(lr=0.01, clipnorm=1.)
-  # sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-  # model.compile(optimizer=sgd, loss=loss, metrics=[metric])
 
   model.compile(optimizer=optimizer, loss=loss, metrics=['mean_squared_error'])
 
@@ -68,13 +65,10 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   optimizer = params["optimizer"]
   loss = params["loss"]
   model = create_ANN_model(input_dimension, num_hidden_layers, num_neurons, activation_func, optimizer, loss)
-  # if params["hiddenlayer"] == 1:
-  #     history = model.fit(dataframe[XCols], dataframe[YCol], epochs=20, batch_size=1, validation_split=0.34)
-  # else:
   history = model.fit(dataframe[XCols], dataframe[YCol], epochs=10, batch_size=1, validation_split=0.34)
-  print(history)
-  print(pred_input)
   result = model.predict(np.array([pred_input]))
+
+  # plot results
   plt.figure()
   plt.plot(np.array(history.history['mean_squared_error']))
   plt.plot(np.array(history.history['val_mean_squared_error']))
@@ -84,8 +78,6 @@ def train(dataframe, XCols, YCol, params, filePathToSaveGraph, pred_input):
   plt.xticks(np.arange(0,10,step=1))
   plt.legend(['training', 'testing'], loc='upper right')
   plt.savefig(filePathToSaveGraph)
-  print(list(np.array(history.history['mean_squared_error'])))
-  print(result[0])
   error = []
   for e in np.nditer(np.array(history.history['mean_squared_error'])):
     error.append(str(e))
