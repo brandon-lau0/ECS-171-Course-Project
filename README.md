@@ -11,19 +11,19 @@ json file for later viewing.
 
 Run the code using
 
-`py main.py <dataset-level_params>.json <grid_search_params>.json`
+`python3 main.py <dataset-level_params>.json <grid_search_params>.json`
 
 * For example, one could run:
 
-    `py main.py singleparam.json singleannparam.json`
+    `python3 main.py singleparam.json singleannparam.json`
 
 * To get the dataset-level param results, we used:
 
-    `py main.py params1.json singleannparam.json`
+    `python3 main.py params1.json singleannparam.json`
 
 * To get the grid search results, use
 
-    `py main.py params.json ann_params.json`
+    `python3 main.py params.json ann_params.json`
 
     Note that in order to break up the results, we actually ran several
     different files called `ann_params_*.json`
